@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="XTecTutorDBEntities-Web.config Connection String" description="XTecTutorDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=EC2AMAZ-PM51DAT\SQLEXPRESS;initial catalog=XTecTutorDB;persist security info=True;user id=admin;password=admin;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\aalop\\source\\repos\\apisBlog\\apisXtecTutor\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='XTecTutorDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

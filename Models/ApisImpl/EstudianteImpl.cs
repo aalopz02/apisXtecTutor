@@ -16,6 +16,7 @@ namespace apisBlog.Models.ApisImpl
                 if (eSTUDIANTE != null)
                 {
                     context.ESTUDIANTEs.Remove(eSTUDIANTE);
+                    context.SaveChanges();
                     return true;
                 }
                 else
@@ -53,7 +54,9 @@ namespace apisBlog.Models.ApisImpl
         {
             using (var context = new XTecTutorDBEntities())
             {
-                return (context.ESTUDIANTEs.Add(nuevo) != null ? true : false);
+                bool result = context.ESTUDIANTEs.Add(nuevo) != null;
+                context.SaveChanges();
+                return result;
             }
         }
     }

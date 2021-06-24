@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="XTecTutorDBModelStoreContainer" CdmEntityContainer="XTecTutorDBEntities">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="ClavePublica" ColumnName="ClavePublica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARCHIVOENTRADAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.ARCHIVOENTRADA">
+        <MappingFragment StoreEntitySet="ARCHIVOENTRADA">
+          <ScalarProperty Name="IdArchivoEntrada" ColumnName="IdArchivoEntrada" />
+          <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTORENTRADAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.AUTORENTRADA">
+        <MappingFragment StoreEntitySet="AUTORENTRADA">
+          <ScalarProperty Name="IdAutorEntrada" ColumnName="IdAutorEntrada" />
+          <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
+          <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CALIFICACIONENTRADAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.CALIFICACIONENTRADA">
+        <MappingFragment StoreEntitySet="CALIFICACIONENTRADA">
+          <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+          <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
+          <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARRERAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.CARRERA">
+        <MappingFragment StoreEntitySet="CARRERA">
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMENTARIOENTRADAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.COMENTARIOENTRADA">
+        <MappingFragment StoreEntitySet="COMENTARIOENTRADA">
+          <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
+          <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
+          <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+          <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSOes">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENTRADAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.ENTRADA">
+        <MappingFragment StoreEntitySet="ENTRADA">
+          <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
+          <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+          <ScalarProperty Name="Curso" ColumnName="Curso" />
+          <ScalarProperty Name="Tema" ColumnName="Tema" />
+          <ScalarProperty Name="FechaCrear" ColumnName="FechaCrear" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="Vistas" ColumnName="Vistas" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTUDIANTEs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.ESTUDIANTE">
+        <MappingFragment StoreEntitySet="ESTUDIANTE">
+          <ScalarProperty Name="Carnet" ColumnName="Carnet" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+          <ScalarProperty Name="ClavePublica" ColumnName="ClavePublica" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEMAs">
+      <EntityTypeMapping TypeName="XTecTutorDBModel.TEMA">
+        <MappingFragment StoreEntitySet="TEMA">
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="IdTema" ColumnName="IdTema" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

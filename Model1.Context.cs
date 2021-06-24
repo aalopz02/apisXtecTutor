@@ -11,7 +11,6 @@ namespace apisBlog
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
     
     public partial class XTecTutorDBEntities : DbContext
@@ -37,6 +36,5 @@ namespace apisBlog
         public virtual DbSet<ESTUDIANTE> ESTUDIANTEs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TEMA> TEMAs { get; set; }
-
     }
 }

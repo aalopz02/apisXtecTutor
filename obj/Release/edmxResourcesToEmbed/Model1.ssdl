@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="XTecTutorDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="Carnet" />
+    </Key>
+    <Property Name="Carnet" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClavePublica" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ARCHIVOENTRADA">
+    <Key>
+      <PropertyRef Name="IdArchivoEntrada" />
+    </Key>
+    <Property Name="IdArchivoEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEntrada" Type="int" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AUTORENTRADA">
+    <Key>
+      <PropertyRef Name="IdAutorEntrada" />
+    </Key>
+    <Property Name="IdAutorEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEntrada" Type="int" Nullable="false" />
+    <Property Name="Carnet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CALIFICACIONENTRADA">
+    <Key>
+      <PropertyRef Name="IdCalificacion" />
+    </Key>
+    <Property Name="IdCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEntrada" Type="int" Nullable="false" />
+    <Property Name="Carnet" Type="int" Nullable="false" />
+    <Property Name="Calificacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARRERA">
+    <Key>
+      <PropertyRef Name="IdCarrera" />
+    </Key>
+    <Property Name="IdCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMENTARIOENTRADA">
+    <Key>
+      <PropertyRef Name="IdComentario" />
+    </Key>
+    <Property Name="IdComentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEntrada" Type="int" Nullable="false" />
+    <Property Name="Carnet" Type="int" Nullable="false" />
+    <Property Name="Contenido" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdCarrera" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENTRADA">
+    <Key>
+      <PropertyRef Name="IdEntrada" />
+    </Key>
+    <Property Name="IdEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Carrera" Type="int" Nullable="false" />
+    <Property Name="Curso" Type="varchar" MaxLength="50" />
+    <Property Name="Tema" Type="int" />
+    <Property Name="FechaCrear" Type="date" Nullable="false" />
+    <Property Name="FechaMod" Type="date" Nullable="false" />
+    <Property Name="Vistas" Type="int" Nullable="false" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="Abstract" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Body" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTE">
+    <Key>
+      <PropertyRef Name="Carnet" />
+    </Key>
+    <Property Name="Carnet" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClavePublica" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TEMA">
+    <Key>
+      <PropertyRef Name="IdTema" />
+    </Key>
+    <Property Name="IdCurso" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdTema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ARCHIVOEN__IdEnt__534D60F1">
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="1" />
+    <End Role="ARCHIVOENTRADA" Type="Self.ARCHIVOENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Principal>
+      <Dependent Role="ARCHIVOENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AUTORENTR__Carne__5441852A">
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="1" />
+    <End Role="AUTORENTRADA" Type="Self.AUTORENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTE">
+        <PropertyRef Name="Carnet" />
+      </Principal>
+      <Dependent Role="AUTORENTRADA">
+        <PropertyRef Name="Carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AUTORENTR__IdEnt__5535A963">
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="1" />
+    <End Role="AUTORENTRADA" Type="Self.AUTORENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Principal>
+      <Dependent Role="AUTORENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CALIFICAC__Carne__5812160E">
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="1" />
+    <End Role="CALIFICACIONENTRADA" Type="Self.CALIFICACIONENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTE">
+        <PropertyRef Name="Carnet" />
+      </Principal>
+      <Dependent Role="CALIFICACIONENTRADA">
+        <PropertyRef Name="Carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CALIFICAC__IdEnt__59063A47">
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="1" />
+    <End Role="CALIFICACIONENTRADA" Type="Self.CALIFICACIONENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Principal>
+      <Dependent Role="CALIFICACIONENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COMENTARI__Carne__5629CD9C">
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="1" />
+    <End Role="COMENTARIOENTRADA" Type="Self.COMENTARIOENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTE">
+        <PropertyRef Name="Carnet" />
+      </Principal>
+      <Dependent Role="COMENTARIOENTRADA">
+        <PropertyRef Name="Carnet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__COMENTARI__IdEnt__571DF1D5">
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="1" />
+    <End Role="COMENTARIOENTRADA" Type="Self.COMENTARIOENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Principal>
+      <Dependent Role="COMENTARIOENTRADA">
+        <PropertyRef Name="IdEntrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CURSO__IdCarrera__4F7CD00D">
+    <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARRERA">
+        <PropertyRef Name="IdCarrera" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="IdCarrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ENTRADA__Carrera__5070F446">
+    <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="1" />
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARRERA">
+        <PropertyRef Name="IdCarrera" />
+      </Principal>
+      <Dependent Role="ENTRADA">
+        <PropertyRef Name="Carrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ENTRADA__Curso__5165187F">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="ENTRADA">
+        <PropertyRef Name="Curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ENTRADA__Tema__52593CB8">
+    <End Role="TEMA" Type="Self.TEMA" Multiplicity="0..1" />
+    <End Role="ENTRADA" Type="Self.ENTRADA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMA">
+        <PropertyRef Name="IdTema" />
+      </Principal>
+      <Dependent Role="ENTRADA">
+        <PropertyRef Name="Tema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TEMA__IdCurso__4E88ABD4">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="TEMA" Type="Self.TEMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="TEMA">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="XTecTutorDBModelStoreContainer">
+    <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARCHIVOENTRADA" EntityType="Self.ARCHIVOENTRADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AUTORENTRADA" EntityType="Self.AUTORENTRADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CALIFICACIONENTRADA" EntityType="Self.CALIFICACIONENTRADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMENTARIOENTRADA" EntityType="Self.COMENTARIOENTRADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENTRADA" EntityType="Self.ENTRADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTUDIANTE" EntityType="Self.ESTUDIANTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEMA" EntityType="Self.TEMA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ARCHIVOEN__IdEnt__534D60F1" Association="Self.FK__ARCHIVOEN__IdEnt__534D60F1">
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+      <End Role="ARCHIVOENTRADA" EntitySet="ARCHIVOENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AUTORENTR__Carne__5441852A" Association="Self.FK__AUTORENTR__Carne__5441852A">
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+      <End Role="AUTORENTRADA" EntitySet="AUTORENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AUTORENTR__IdEnt__5535A963" Association="Self.FK__AUTORENTR__IdEnt__5535A963">
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+      <End Role="AUTORENTRADA" EntitySet="AUTORENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CALIFICAC__Carne__5812160E" Association="Self.FK__CALIFICAC__Carne__5812160E">
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+      <End Role="CALIFICACIONENTRADA" EntitySet="CALIFICACIONENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CALIFICAC__IdEnt__59063A47" Association="Self.FK__CALIFICAC__IdEnt__59063A47">
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+      <End Role="CALIFICACIONENTRADA" EntitySet="CALIFICACIONENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COMENTARI__Carne__5629CD9C" Association="Self.FK__COMENTARI__Carne__5629CD9C">
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+      <End Role="COMENTARIOENTRADA" EntitySet="COMENTARIOENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__COMENTARI__IdEnt__571DF1D5" Association="Self.FK__COMENTARI__IdEnt__571DF1D5">
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+      <End Role="COMENTARIOENTRADA" EntitySet="COMENTARIOENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CURSO__IdCarrera__4F7CD00D" Association="Self.FK__CURSO__IdCarrera__4F7CD00D">
+      <End Role="CARRERA" EntitySet="CARRERA" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ENTRADA__Carrera__5070F446" Association="Self.FK__ENTRADA__Carrera__5070F446">
+      <End Role="CARRERA" EntitySet="CARRERA" />
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ENTRADA__Curso__5165187F" Association="Self.FK__ENTRADA__Curso__5165187F">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ENTRADA__Tema__52593CB8" Association="Self.FK__ENTRADA__Tema__52593CB8">
+      <End Role="TEMA" EntitySet="TEMA" />
+      <End Role="ENTRADA" EntitySet="ENTRADA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TEMA__IdCurso__4E88ABD4" Association="Self.FK__TEMA__IdCurso__4E88ABD4">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="TEMA" EntitySet="TEMA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

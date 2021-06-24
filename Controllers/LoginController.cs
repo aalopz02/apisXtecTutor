@@ -20,7 +20,7 @@ namespace apisBlog.Controllers
         }
 
         // GET api/values/5
-        public Object Get(int carnet)
+        public String Get(int carnet)
         {
             if (apiAdmin.getAdmin(carnet) != null)
             {
@@ -36,8 +36,15 @@ namespace apisBlog.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody] string value)
+        public void Post(string value)
         {
+            apiAdmin.setAdmin(new ADMIN
+            {
+                Nombre = "admin",
+                Carnet = 123,
+                Apellido = "ap1",
+                ClavePublica = "clave"
+            });
         }
 
         // PUT api/values/5

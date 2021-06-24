@@ -16,6 +16,7 @@ namespace apisBlog.Models.ApisImpl
                 if (cALIFICACIONENTRADA != null)
                 {
                     context.CALIFICACIONENTRADAs.Remove(cALIFICACIONENTRADA);
+                    context.SaveChanges();
                     return true;
                 }
                 else
@@ -53,7 +54,9 @@ namespace apisBlog.Models.ApisImpl
         {
             using (var context = new XTecTutorDBEntities())
             {
-                return (context.CALIFICACIONENTRADAs.Add(nuevo) != null ? true : false);
+                bool result = context.CALIFICACIONENTRADAs.Add(nuevo) != null;
+                context.SaveChanges();
+                return result;
             }
         }
     }

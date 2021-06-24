@@ -17,6 +17,7 @@ namespace apisBlog.Models.ApisImpl
                 if (eNTRADA != null)
                 {
                     context.ENTRADAs.Remove(eNTRADA);
+                    context.SaveChanges();
                     return true;
                 }
                 else
@@ -54,7 +55,9 @@ namespace apisBlog.Models.ApisImpl
         {
             using (var context = new XTecTutorDBEntities())
             {
-                return (context.ENTRADAs.Add(entrada) != null ? true : false);
+                bool result = context.ENTRADAs.Add(entrada) != null;
+                context.SaveChanges();
+                return result;
             }
         }
     }

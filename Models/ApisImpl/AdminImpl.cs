@@ -16,6 +16,7 @@ namespace apisBlog.Models.ApisImpl
                 if (admin != null)
                 {
                     context.ADMINs.Remove(admin);
+                    context.SaveChanges();
                     return true;
                 }
                 else {
@@ -52,7 +53,9 @@ namespace apisBlog.Models.ApisImpl
         {
             using (var context = new XTecTutorDBEntities())
             {
-                return (context.ADMINs.Add(nuevo) != null ? true : false);  
+                bool result = (context.ADMINs.Add(nuevo) != null);
+                context.SaveChanges();
+                return result;
             }
         }
     }

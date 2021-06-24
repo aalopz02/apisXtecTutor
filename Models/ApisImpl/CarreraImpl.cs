@@ -16,6 +16,7 @@ namespace apisBlog.Models.ApisImpl
                 if (cARRERA != null)
                 {
                     context.CARRERAs.Remove(cARRERA);
+                    context.SaveChanges();
                     return true;
                 }
                 else
@@ -52,8 +53,9 @@ namespace apisBlog.Models.ApisImpl
         public bool setCarrera(CARRERA nuevo)
         {
             using (var context = new XTecTutorDBEntities())
-            {
-                return (context.CARRERAs.Add(nuevo) != null ? true : false);
+            {bool result = context.CARRERAs.Add(nuevo) != null;
+                context.SaveChanges();
+                return result;
             }
         }
     }
