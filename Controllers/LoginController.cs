@@ -1,11 +1,13 @@
 ﻿using apisBlog.Models.ApisI;
 using apisBlog.Models.ApisImpl;
+using apisBlog.Models.ApisModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace apisBlog.Controllers
 {
@@ -24,15 +26,65 @@ namespace apisBlog.Controllers
         {
             if (apiAdmin.getAdmin(carnet) != null)
             {
-                return "es admin";
+                return "Es admin";
             }
             else if (apiEstudiante.getEstudiante(carnet) != null)
             {
-                return "es estudiante";
+                return "Es estudiante";
             }
             else {
-                return "sea mamon";
+                return "No es estudiante ni admin";
             }
+        }
+
+
+
+        public LoginModel Get(int carnet,string password)
+        {
+      
+
+            LoginModel model = new LoginModel
+            {
+            
+            };
+
+            if (apiAdmin.getAdmin(carnet) != null)
+            {
+                if (apiAdmin.getAdmin(carnet).ClavePublica == password)
+                {
+                    model.info = "Password correcta Admin";
+                    model.admin= apiAdmin.getAdmin(carnet);
+                    return model;
+                }
+
+                else
+                {
+                    model.info= "Password incorrecta Admin";
+                    return model;
+                }
+
+            }
+            else if (apiEstudiante.getEstudiante(carnet) != null)
+            {
+                if (apiEstudiante.getEstudiante(carnet).ClavePublica == password)
+                {
+                    model.info = "Password correcta Estudiante";
+                    model.estudiante= apiEstudiante.getEstudiante(carnet);
+                    return model;
+                }
+
+                else
+                {
+                    model.info= "Password incorrecta Estudiante";
+                    return model;
+                }
+            }
+            else
+            {
+                model.info= "No es estudiante ni admin";
+                return model;
+            }
+        
         }
 
         // POST api/values
