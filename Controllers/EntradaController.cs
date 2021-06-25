@@ -1,0 +1,62 @@
+﻿using apisBlog.Models.ApisI;
+using apisBlog.Models.ApisImpl;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+
+namespace apisBlog.Controllers
+{
+    public class EntradaController : ApiController
+    {
+        EntradaI apiEntrada = new EntradaImpl();
+        EstudianteI apiEstudiante = new EstudianteImpl();
+        AutorEntradaI apiAutores = new AutorEntradaImpl();
+
+        public IEnumerable<ENTRADA> getByAutor(int carnet)
+        {
+            ESTUDIANTE autor = apiEstudiante.getEstudiante(carnet);
+            if (autor != null)
+            {
+                IEnumerable<int> entradasHechas = apiAutores.getAllAutoresEntrada().Where(c => c.Carnet == carnet).Select(c => c.IdEntrada);
+                return apiEntrada.getAllEntradas().Where(e => entradasHechas.Contains(e.IdEntrada));
+            }
+            else {
+                return null;
+            }
+        }
+
+        //[FromBody] ENTRADA nueva
+        public ENTRADA Post(string Abstract, string Body, string autores,int IdCarrera, String curso, int idTema) {
+            DateTime fechaActual = DateTime.Today;
+            ENTRADA nueva = new ENTRADA
+            {
+                Abstract = Abstract,
+                Body = Body,
+                Visible = true,
+                Vistas = 0,
+                FechaCrear = fechaActual,
+                FechaMod = fechaActual,
+                Carrera = IdCarrera,
+                Curso = (curso == "0") ? null : curso
+            };
+            if (idTema != 0) {
+                nueva.Tema = idTema;
+            }
+            apiEntrada.setEntrada(nueva);
+            int id = apiEntrada.getAllEntradas().Last().IdEntrada;
+            foreach (string carnetAutor in autores.Split(',')) {
+                AUTORENTRADA nuevoAutor = new AUTORENTRADA
+                {
+                    Carnet = int.Parse(carnetAutor),
+                    IdEntrada = id
+                };
+                apiAutores.setAutorEntrada(nuevoAutor);
+            }
+            nueva.IdEntrada = id;
+            return nueva;
+        }
+    }
+}
