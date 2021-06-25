@@ -229,7 +229,6 @@
     <Compile Include="Models\ApisI\CursoI.cs" />
     <Compile Include="Models\ApisI\EntradaI.cs" />
     <Compile Include="Models\ApisI\EstudianteI.cs" />
-    <Compile Include="Models\ApiModel\LoginModel.cs" />
     <Compile Include="Models\ApisI\TemaI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
