@@ -21,7 +21,25 @@ namespace apisBlog.Controllers
             if (autor != null)
             {
                 IEnumerable<int> entradasHechas = apiAutores.getAllAutoresEntrada().Where(c => c.Carnet == carnet).Select(c => c.IdEntrada);
-                return apiEntrada.getAllEntradas().Where(e => entradasHechas.Contains(e.IdEntrada));
+                IEnumerable<ENTRADA> listaRetorno = apiEntrada.getAllEntradas().Where(e => entradasHechas.Contains(e.IdEntrada));
+                List<ENTRADA> aux = new List<ENTRADA>();
+                foreach (ENTRADA entrada in listaRetorno) {
+                    aux.Add(new ENTRADA
+                    {
+                        Visible = entrada.Visible,
+                        Vistas = entrada.Vistas,
+                        Abstract = entrada.Abstract,
+                        Body = entrada.Body,
+                        Carrera = entrada.Carrera,
+                        Curso = entrada.Curso,
+                        Tema = entrada.Tema,
+                        FechaCrear = entrada.FechaCrear,
+                        FechaMod = entrada.FechaMod,
+                        IdEntrada = entrada.IdEntrada,
+                    }) ;
+                    
+                }
+                return aux;
             }
             else {
                 return null;

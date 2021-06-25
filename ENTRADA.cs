@@ -11,7 +11,8 @@ namespace apisBlog
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Xml.Serialization;
+
     public partial class ENTRADA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,14 +34,21 @@ namespace apisBlog
         public bool Visible { get; set; }
         public string Abstract { get; set; }
         public string Body { get; set; }
-    
+
+        [XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARCHIVOENTRADA> ARCHIVOENTRADAs { get; set; }
+       
+        [XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AUTORENTRADA> AUTORENTRADAs { get; set; }
+       
+        [XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CALIFICACIONENTRADA> CALIFICACIONENTRADAs { get; set; }
         public virtual CARRERA CARRERA1 { get; set; }
+
+        [XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMENTARIOENTRADA> COMENTARIOENTRADAs { get; set; }
         public virtual CURSO CURSO1 { get; set; }
