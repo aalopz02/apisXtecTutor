@@ -21,32 +21,9 @@ namespace apisBlog.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public String Get(int carnet)
-        {
-            if (apiAdmin.getAdmin(carnet) != null)
-            {
-                return "Es admin";
-            }
-            else if (apiEstudiante.getEstudiante(carnet) != null)
-            {
-                return "Es estudiante";
-            }
-            else {
-                return "No es estudiante ni admin";
-            }
-        }
-
-
-
         public LoginModel Get(int carnet,string password)
         {
-      
-
-            LoginModel model = new LoginModel
-            {
-            
-            };
+            LoginModel model = new LoginModel();
 
             if (apiAdmin.getAdmin(carnet) != null)
             {
@@ -56,15 +33,14 @@ namespace apisBlog.Controllers
                     model.admin= apiAdmin.getAdmin(carnet);
                     return model;
                 }
-
                 else
                 {
                     model.info= "Password incorrecta Admin";
                     return model;
                 }
-
             }
-            else if (apiEstudiante.getEstudiante(carnet) != null)
+            
+            if (apiEstudiante.getEstudiante(carnet) != null)
             {
                 if (apiEstudiante.getEstudiante(carnet).ClavePublica == password)
                 {
