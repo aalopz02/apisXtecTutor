@@ -1,5 +1,6 @@
 ﻿using apisBlog.Models.ApisI;
 using apisBlog.Models.ApisImpl;
+using apisBlog.Models.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace apisBlog.Controllers
 {
     public class EntradaController : ApiController
     {
-        EntradaI apiEntrada = new EntradaImpl();
-        EstudianteI apiEstudiante = new EstudianteImpl();
-        AutorEntradaI apiAutores = new AutorEntradaImpl();
+        //EntradaI apiEntrada = new EntradaImpl();
+        //EstudianteI apiEstudiante = new EstudianteImpl();
+        //AutorEntradaI apiAutores = new AutorEntradaImpl();
+        EntradaI apiEntrada = new EntradasMock();
+        EstudianteI apiEstudiante = new EstudiantesMock();
+        AutorEntradaI apiAutores = new AutoresMock();
 
         public IEnumerable<ENTRADA> getByAutor(int carnet)
         {
@@ -35,7 +39,7 @@ namespace apisBlog.Controllers
                         Tema = entrada.Tema,
                         FechaCrear = entrada.FechaCrear,
                         FechaMod = entrada.FechaMod,
-                        IdEntrada = entrada.IdEntrada,
+                        IdEntrada = entrada.IdEntrada
                     }) ;
                     
                 }

@@ -9,8 +9,10 @@
 
 namespace apisBlog
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Web.Script.Serialization;
     using System.Xml.Serialization;
 
     public partial class ENTRADA
@@ -35,23 +37,42 @@ namespace apisBlog
         public string Abstract { get; set; }
         public string Body { get; set; }
 
+        [ScriptIgnore]
         [XmlIgnore]
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARCHIVOENTRADA> ARCHIVOENTRADAs { get; set; }
-       
+
+        [ScriptIgnore]
         [XmlIgnore]
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AUTORENTRADA> AUTORENTRADAs { get; set; }
-       
+
+        [ScriptIgnore]
         [XmlIgnore]
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CALIFICACIONENTRADA> CALIFICACIONENTRADAs { get; set; }
+        
+        [ScriptIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public virtual CARRERA CARRERA1 { get; set; }
 
+        [JsonIgnore]
         [XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMENTARIOENTRADA> COMENTARIOENTRADAs { get; set; }
+       
+        [ScriptIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public virtual CURSO CURSO1 { get; set; }
+
+        [ScriptIgnore]
+        [JsonIgnore]
+        [XmlIgnore]
         public virtual TEMA TEMA1 { get; set; }
     }
 }

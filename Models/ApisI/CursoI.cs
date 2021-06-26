@@ -8,7 +8,7 @@ namespace apisBlog.Models.ApisI
 {
     interface CursoI
     {
-        CURSO getCurso(int IdCurso);
+        CURSO getCurso(string IdCurso);
         bool setCurso(CURSO nuevo);
         List<CURSO> getAllCursos();
         bool deleteCurso(int IdCurso);
