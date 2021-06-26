@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Security.Cryptography;
 
 namespace apisBlog.Controllers
 {
@@ -24,15 +26,68 @@ namespace apisBlog.Controllers
         {
             if (apiAdmin.getAdmin(carnet) != null)
             {
-                return "es admin";
+                return "Es admin";
             }
             else if (apiEstudiante.getEstudiante(carnet) != null)
             {
-                return "es estudiante";
+                return "Es estudiante";
             }
             else {
-                return "sea mamon";
+                return "No es estudiante ni admin";
             }
+        }
+
+
+
+        public Object Get(int carnet,string password)
+        {
+
+            var sha256 = new SHA256Managed();
+            string passwordSHA=BitConverter.ToString(sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "");
+            if (apiAdmin.getAdmin(carnet) != null)
+            {
+                if (apiAdmin.getAdmin(carnet).ClavePublica == passwordSHA)
+                {
+                    ADMIN admin = new ADMIN
+                    {
+                        Carnet = apiAdmin.getAdmin(carnet).Carnet,
+                        Apellido = apiAdmin.getAdmin(carnet).Apellido,
+                        Nombre = apiAdmin.getAdmin(carnet).Nombre
+                    };
+                    return admin;
+                }
+
+                else
+                {
+                   return "Password incorrecta Admin";
+                }
+
+            }
+            else if (apiEstudiante.getEstudiante(carnet) != null)
+            {
+                if (apiEstudiante.getEstudiante(carnet).ClavePublica == passwordSHA)
+                {
+                    ESTUDIANTE estudiante = new ESTUDIANTE
+                    {
+                        Carnet = apiEstudiante.getEstudiante(carnet).Carnet,
+                        Apellido = apiEstudiante.getEstudiante(carnet).Apellido,
+                        Nombre = apiEstudiante.getEstudiante(carnet).Nombre,
+                        Apellido2 = apiEstudiante.getEstudiante(carnet).Apellido2,
+                        Correo=apiEstudiante.getEstudiante(carnet).Correo
+                    };
+                    return estudiante;
+                }
+
+                else
+                {
+                    return "Password incorrecta Estudiante";
+                }
+            }
+            else
+            {
+                 return "No es estudiante ni admin";
+            }
+          
         }
 
         // POST api/values
