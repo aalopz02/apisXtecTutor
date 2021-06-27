@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models;
 
 namespace apisBlog.Controllers
 {
@@ -30,8 +31,34 @@ namespace apisBlog.Controllers
 
         [System.Web.Mvc.HttpGet]
         //https://localhost:44395/api/Entrada?idEntrada=123
-        public ENTRADA getById(int idEntrada) {
-            return apiEntrada.getEntrada(idEntrada);
+        public EntradaViewModel getById(int idEntrada) {
+
+            EntradaViewModel entradaView = new EntradaViewModel();
+            ENTRADA eNTRADA = apiEntrada.getEntrada(idEntrada);
+            entradaView.Vistas = eNTRADA.Vistas;
+            entradaView.Abstract = eNTRADA.Abstract;
+            entradaView.Body = eNTRADA.Body;
+            entradaView.Carrera = eNTRADA.Carrera;
+            entradaView.Curso = eNTRADA.Curso;
+            if (eNTRADA.Tema != null || eNTRADA.Tema != 0) {
+                entradaView.Tema = (int)eNTRADA.Tema;
+            }
+            entradaView.FechaCrear = eNTRADA.FechaCrear;
+            entradaView.FechaMod = eNTRADA.FechaMod;
+            entradaView.IdEntrada = eNTRADA.IdEntrada;
+            entradaView.calificacion = new CalificacionController().getOverAll(idEntrada).ToString();
+            entradaView.listaAutores = new AutoresController().getAutores(idEntrada).ToList();
+            List<COMENTARIOENTRADA> listaComentarios = new ComentariosController().getForEntrada(idEntrada).ToList();
+            entradaView.listaComentario = new List<Comentariomodel>();
+            foreach (COMENTARIOENTRADA cOMENTARIOENTRADA in listaComentarios) {
+                ESTUDIANTE estudiante = apiEstudiante.getEstudiante(cOMENTARIOENTRADA.Carnet);
+                entradaView.listaComentario.Add(new Comentariomodel {
+                    body = cOMENTARIOENTRADA.Contenido,
+                    carnet = estudiante.Carnet,
+                    nombre = estudiante.Nombre
+                });
+            }
+            return entradaView;
         }
 
         [System.Web.Mvc.HttpGet]
