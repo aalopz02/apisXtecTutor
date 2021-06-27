@@ -256,7 +256,6 @@ E:\Documents\GitHub\apisXtecTutor\bin\System.Web.WebPages.Deployment.xml
 E:\Documents\GitHub\apisXtecTutor\bin\System.Web.WebPages.Razor.xml
 E:\Documents\GitHub\apisXtecTutor\bin\Antlr3.Runtime.pdb
 E:\Documents\GitHub\apisXtecTutor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csprojAssemblyReference.cache
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CoreCompileInputs.cache
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CopyComplete
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.dll
