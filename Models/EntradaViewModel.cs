@@ -7,7 +7,7 @@ namespace apisBlog.Models
 {
     public class EntradaViewModel
     {
-        public List<Comentariomodel> listaComentario { set; get; }
+        public List<ComentarioModel> listaComentario { set; get; }
         public List<AutorModel> listaAutores { set; get; }
         public string calificacion { get; set; }
         public int IdEntrada { get; set; }
@@ -19,5 +19,6 @@ namespace apisBlog.Models
         public int Vistas { get; set; }
         public string Abstract { get; set; }
         public string Body { get; set; }
+        public string titulo { get; set; }
     }
 }

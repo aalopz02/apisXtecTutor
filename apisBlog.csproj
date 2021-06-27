@@ -245,7 +245,7 @@
     <Compile Include="Models\ApisI\TemaI.cs" />
     <Compile Include="Models\AutorModel.cs" />
     <Compile Include="Models\BusquedaFechaModel.cs" />
-    <Compile Include="Models\Comentariomodel.cs" />
+    <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\EntradaViewModel.cs" />
     <Compile Include="Models\FileHandler.cs" />
     <Compile Include="Models\FileModel.cs" />

@@ -18,6 +18,7 @@ namespace apisBlog
         public int IdEntrada { get; set; }
         public int Carnet { get; set; }
         public int Calificacion { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
     
         public virtual ESTUDIANTE ESTUDIANTE { get; set; }
         public virtual ENTRADA ENTRADA { get; set; }

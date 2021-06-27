@@ -56,15 +56,17 @@ namespace apisBlog.Controllers
             entradaView.calificacion = new CalificacionController().getOverAll(idEntrada).ToString();
             entradaView.listaAutores = new AutoresController().getAutores(idEntrada).ToList();
             List<COMENTARIOENTRADA> listaComentarios = new ComentariosController().getForEntrada(idEntrada).ToList();
-            entradaView.listaComentario = new List<Comentariomodel>();
+            entradaView.listaComentario = new List<ComentarioModel>();
             foreach (COMENTARIOENTRADA cOMENTARIOENTRADA in listaComentarios) {
                 ESTUDIANTE estudiante = apiEstudiante.getEstudiante(cOMENTARIOENTRADA.Carnet);
-                entradaView.listaComentario.Add(new Comentariomodel {
+                entradaView.listaComentario.Add(new ComentarioModel {
                     body = cOMENTARIOENTRADA.Contenido,
                     carnet = estudiante.Carnet,
-                    nombre = estudiante.Nombre
+                    nombre = estudiante.Nombre,
+                    fecha = (DateTime)cOMENTARIOENTRADA.Fecha
                 });
             }
+            entradaView.titulo = eNTRADA.Titulo;
             return entradaView;
         }
 
@@ -81,6 +83,7 @@ namespace apisBlog.Controllers
                 foreach (ENTRADA entrada in listaRetorno) {
                     aux.Add(new ENTRADA
                     {
+                        Titulo = entrada.Titulo,
                         Visible = entrada.Visible,
                         Vistas = entrada.Vistas,
                         Abstract = entrada.Abstract,
@@ -101,14 +104,15 @@ namespace apisBlog.Controllers
             }
         }
 
-        //https://localhost:44395/api/Entrada?Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0
+        //https://localhost:44395/api/Entrada?titulo=eltitulo&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0
         //Si no hay curso tirar "0"
         //Si no hay tema tirar 0
         [System.Web.Mvc.HttpPost]
-        public ENTRADA Post(string Abstract, string Body, string autores,int IdCarrera, String curso, int idTema) {
+        public ENTRADA Posts(string titulo, string Abstract, string Body, string autores,int IdCarrera, String curso, int idTema) {
             DateTime fechaActual = DateTime.Today;
             ENTRADA nueva = new ENTRADA
             {
+                Titulo = titulo,
                 Abstract = Abstract,
                 Body = Body,
                 Visible = true,
@@ -135,17 +139,18 @@ namespace apisBlog.Controllers
             return nueva;
         }
 
-        //https://localhost:44395/api/Entrada?IdEntrada=id&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0&visible=true
+        //https://localhost:44395/api/Entrada?IdEntrada=id&titulo=eltitulo&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0&visible=true
         //usar true y false, para valor
         //Si no hay curso tirar "0"
         //Si no hay tema tirar 0
         //incluir en autores los que hay al final
         [System.Web.Mvc.HttpPatch]
-        public void Patch(int IdEntrada, string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema, bool visible)
+        public void Patch(int IdEntrada,string titulo ,string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema, bool visible)
         {
             DateTime fechaActual = DateTime.Today;
             ENTRADA nueva = new ENTRADA
             {
+                Titulo = titulo,
                 IdEntrada = IdEntrada,
                 Abstract = Abstract,
                 Body = Body,

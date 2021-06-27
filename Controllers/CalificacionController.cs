@@ -25,5 +25,16 @@ namespace apisBlog.Controllers
             return promedio / calificaciones.Count();
         }
 
+        //https://localhost:44395/api/Calificacion?IdEntrada=123&Carnet=123
+        [System.Web.Mvc.HttpPost]
+        public void calificar(int IdEntrada,int Carnet)
+        {
+            apiCalificacion.setCalificacion(new CALIFICACIONENTRADA {
+                IdEntrada = IdEntrada,
+                Carnet = Carnet,
+                Fecha = System.DateTime.Today
+            });
+        }
+
     }
 }

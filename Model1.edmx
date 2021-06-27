@@ -38,6 +38,7 @@
           <Property Name="IdEntrada" Type="int" Nullable="false" />
           <Property Name="Carnet" Type="int" Nullable="false" />
           <Property Name="Calificacion" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
         </EntityType>
         <EntityType Name="CARRERA">
           <Key>
@@ -54,6 +55,7 @@
           <Property Name="IdEntrada" Type="int" Nullable="false" />
           <Property Name="Carnet" Type="int" Nullable="false" />
           <Property Name="Contenido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
         </EntityType>
         <EntityType Name="CURSO">
           <Key>
@@ -77,6 +79,7 @@
           <Property Name="Visible" Type="bit" Nullable="false" />
           <Property Name="Abstract" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Body" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ESTUDIANTE">
           <Key>
@@ -354,6 +357,7 @@
           <Property Name="Calificacion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK__CALIFICAC__Carne__5812160E" FromRole="CALIFICACIONENTRADA" ToRole="ESTUDIANTE" />
           <NavigationProperty Name="ENTRADA" Relationship="Self.FK__CALIFICAC__IdEnt__59063A47" FromRole="CALIFICACIONENTRADA" ToRole="ENTRADA" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="CARRERA">
           <Key>
@@ -374,6 +378,7 @@
           <Property Name="Contenido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK__COMENTARI__Carne__5629CD9C" FromRole="COMENTARIOENTRADA" ToRole="ESTUDIANTE" />
           <NavigationProperty Name="ENTRADA" Relationship="Self.FK__COMENTARI__IdEnt__571DF1D5" FromRole="COMENTARIOENTRADA" ToRole="ENTRADA" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="CURSO">
           <Key>
@@ -407,6 +412,7 @@
           <NavigationProperty Name="COMENTARIOENTRADAs" Relationship="Self.FK__COMENTARI__IdEnt__571DF1D5" FromRole="ENTRADA" ToRole="COMENTARIOENTRADA" />
           <NavigationProperty Name="CURSO1" Relationship="Self.FK__ENTRADA__Curso__5165187F" FromRole="ENTRADA" ToRole="CURSO" />
           <NavigationProperty Name="TEMA1" Relationship="Self.FK__ENTRADA__Tema__52593CB8" FromRole="ENTRADA" ToRole="TEMA" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ESTUDIANTE">
           <Key>
@@ -684,6 +690,7 @@
           <EntitySetMapping Name="CALIFICACIONENTRADAs">
             <EntityTypeMapping TypeName="XTecTutorDBModel.CALIFICACIONENTRADA">
               <MappingFragment StoreEntitySet="CALIFICACIONENTRADA">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
                 <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
                 <ScalarProperty Name="Carnet" ColumnName="Carnet" />
@@ -702,6 +709,7 @@
           <EntitySetMapping Name="COMENTARIOENTRADAs">
             <EntityTypeMapping TypeName="XTecTutorDBModel.COMENTARIOENTRADA">
               <MappingFragment StoreEntitySet="COMENTARIOENTRADA">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
                 <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
                 <ScalarProperty Name="Carnet" ColumnName="Carnet" />
@@ -721,6 +729,7 @@
           <EntitySetMapping Name="ENTRADAs">
             <EntityTypeMapping TypeName="XTecTutorDBModel.ENTRADA">
               <MappingFragment StoreEntitySet="ENTRADA">
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
                 <ScalarProperty Name="Carrera" ColumnName="Carrera" />
                 <ScalarProperty Name="Curso" ColumnName="Curso" />

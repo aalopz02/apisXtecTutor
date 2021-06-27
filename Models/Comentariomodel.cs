@@ -5,10 +5,11 @@ using System.Web;
 
 namespace apisBlog.Models
 {
-    public class Comentariomodel
+    public class ComentarioModel
     {
         public int carnet { get; set; }
         public string nombre { get; set; }
         public string body { get; set; }
+        public System.DateTime fecha { get; set; }
     }
 }

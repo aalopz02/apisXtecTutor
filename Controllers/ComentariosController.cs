@@ -19,6 +19,18 @@ namespace apisBlog.Controllers
             return apiComentarios.getAllComentarios().Where(c => c.IdEntrada == IdEntrada);
         }
 
+        //https://localhost:44395/api/Comentarios?IdEntrada=123&Carnet=123&Contenido=cacaacaca
+        [System.Web.Mvc.HttpPost]
+        public void setComentario(int IdEntrada,int Carnet, String Contenido)
+        {
+            apiComentarios.setComentario(new COMENTARIOENTRADA {
+                IdEntrada = IdEntrada,
+                Carnet = Carnet,
+                Contenido = Contenido,
+                Fecha = System.DateTime.Today
+            });
+        }
+
         //https://localhost:44395/api/Comentarios?IdComentario=123
         [System.Web.Mvc.HttpDelete]
         public void delete(int IdComentario)
