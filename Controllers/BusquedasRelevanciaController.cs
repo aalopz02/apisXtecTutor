@@ -74,7 +74,7 @@ namespace apisBlog.Controllers
                 });
 
             }
-            return aux.OrderBy(e=>e.Relevancia);
+            return aux.OrderByDescending(e => e.Relevancia);
         }
 
         public IEnumerable<BusquedaRelevanciaModel> Get(string fecha, int carrera, string curso)
@@ -131,7 +131,7 @@ namespace apisBlog.Controllers
                 });
 
             }
-            return aux.OrderBy(e => e.Relevancia);
+            return aux.OrderByDescending(e => e.Relevancia);
         }
 
         public IEnumerable<BusquedaRelevanciaModel> Get(string fecha, int carrera, string curso, int tema)
@@ -188,7 +188,7 @@ namespace apisBlog.Controllers
                 });
 
             }
-            return aux.OrderBy(e => e.Relevancia);
+            return aux.OrderByDescending(e => e.Relevancia);
         }
     }
 }
