@@ -185,6 +185,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BusquedasFechaController.cs" />
+    <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
@@ -330,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Calificacion\" />
     <Folder Include="Views\Comenatarios\" />
     <Folder Include="Views\Entrada\" />
     <Folder Include="Views\Files\" />
