@@ -12,18 +12,15 @@ namespace apisBlog
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.SqlClient;
-
+    
     public partial class XTecTutorDBEntities : DbContext
     {
-
-        public XTecTutorDBEntities() : base("name=XTecTutorDBEntities")
-        { 
-            
+        public XTecTutorDBEntities()
+            : base("name=XTecTutorDBEntities")
+        {
         }
-  
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }

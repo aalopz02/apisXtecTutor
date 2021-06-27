@@ -52,6 +52,9 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\VS.QualityTools.UnitTestFramework.15.0.27323.2\lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -183,6 +186,7 @@
     </Compile>
     <Compile Include="Controllers\BusquedasFechaController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -234,6 +238,8 @@
     <Compile Include="Models\ApisI\EstudianteI.cs" />
     <Compile Include="Models\ApisI\TemaI.cs" />
     <Compile Include="Models\BusquedaFechaModel.cs" />
+    <Compile Include="Models\FileHandler.cs" />
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\Mocks\AdminMock.cs" />
     <Compile Include="Models\Mocks\ArchivoEntradaMock.cs" />
     <Compile Include="Models\Mocks\AutoresMock.cs" />
@@ -324,6 +330,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Entrada\" />
+    <Folder Include="Views\Files\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>

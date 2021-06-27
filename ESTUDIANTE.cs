@@ -9,7 +9,6 @@
 
 namespace apisBlog
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -31,13 +30,10 @@ namespace apisBlog
         public string Correo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<AUTORENTRADA> AUTORENTRADAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<CALIFICACIONENTRADA> CALIFICACIONENTRADAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<COMENTARIOENTRADA> COMENTARIOENTRADAs { get; set; }
     }
 }

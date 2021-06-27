@@ -18,6 +18,7 @@ namespace apisBlog.Controllers
         EstudianteI apiEstudiante = new EstudianteImpl();
         ComentarioEntradaI apiComentarios = new ComentariosEntradaImpl();
         CalificacionEntradaI apiCalificacion = new CalificacionEntradaImpl();
+
         // GET: Busquedas
         //api/BusquedasFecha?fecha=03/12/22&carrera=1
         public IEnumerable<BusquedaFechaModel> Get(string fecha, int carrera)

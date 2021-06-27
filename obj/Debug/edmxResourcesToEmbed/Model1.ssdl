@@ -7,7 +7,7 @@
     <Property Name="Carnet" Type="int" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ClavePublica" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClavePublica" Type="varchar" MaxLength="64" />
   </EntityType>
   <EntityType Name="ARCHIVOENTRADA">
     <Key>
@@ -15,7 +15,7 @@
     </Key>
     <Property Name="IdArchivoEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdEntrada" Type="int" Nullable="false" />
-    <Property Name="Path" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="AUTORENTRADA">
     <Key>
@@ -81,7 +81,7 @@
     <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido2" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="ClavePublica" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClavePublica" Type="varchar" MaxLength="64" />
     <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">

@@ -58,9 +58,28 @@ namespace apisBlog.Models.Mocks
             return null;
         }
 
-        public bool setEntrada(ENTRADA entrada)
+        public bool setEntrada(ENTRADA nueva)
         {
-            throw new NotImplementedException();
+            listaEntradas.Add(nueva);
+            return true;
+        }
+
+        public void modEntrada(ENTRADA entrada)
+        {
+            for (int i =0; i < listaEntradas.Count; i++)
+            {
+                if (listaEntradas[i].IdEntrada == entrada.IdEntrada)
+                {
+                    listaEntradas[i].Abstract = entrada.Abstract;
+                    listaEntradas[i].Body = entrada.Body;
+                    listaEntradas[i].Carrera = entrada.Carrera;
+                    listaEntradas[i].Curso = entrada.Curso;
+                    listaEntradas[i].Tema = entrada.Tema;
+                    listaEntradas[i].Visible = entrada.Visible;
+                    listaEntradas[i].FechaMod = entrada.FechaMod;
+                    return;
+                }
+            }
         }
     }
 }

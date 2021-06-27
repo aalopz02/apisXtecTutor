@@ -7,9 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace apisBlog.Controllers
 {
+    [TestClass]
     public class EntradaController : ApiController
     {
         //EntradaI apiEntrada = new EntradaImpl();
@@ -19,6 +21,21 @@ namespace apisBlog.Controllers
         EstudianteI apiEstudiante = new EstudiantesMock();
         AutorEntradaI apiAutores = new AutoresMock();
 
+        [TestMethod]
+        public void set() {
+            apiEntrada = new EntradasMock();
+            apiEstudiante = new EstudiantesMock();
+            apiAutores = new AutoresMock();
+        }
+
+        [System.Web.Mvc.HttpGet]
+        //https://localhost:44395/api/Entrada?idEntrada=123
+        public ENTRADA getById(int idEntrada) {
+            return apiEntrada.getEntrada(idEntrada);
+        }
+
+        [System.Web.Mvc.HttpGet]
+        //https://localhost:44395/api/Entrada?carnet=123
         public IEnumerable<ENTRADA> getByAutor(int carnet)
         {
             ESTUDIANTE autor = apiEstudiante.getEstudiante(carnet);
@@ -50,7 +67,10 @@ namespace apisBlog.Controllers
             }
         }
 
-        //[FromBody] ENTRADA nueva
+        //https://localhost:44395/api/Entrada?Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0
+        //Si no hay curso tirar "0"
+        //Si no hay tema tirar 0
+        [System.Web.Mvc.HttpPost]
         public ENTRADA Post(string Abstract, string Body, string autores,int IdCarrera, String curso, int idTema) {
             DateTime fechaActual = DateTime.Today;
             ENTRADA nueva = new ENTRADA
@@ -79,6 +99,51 @@ namespace apisBlog.Controllers
             }
             nueva.IdEntrada = id;
             return nueva;
+        }
+
+        //https://localhost:44395/api/Entrada?IdEntrada=id&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0&visible=true
+        //usar true y false, para valor
+        //Si no hay curso tirar "0"
+        //Si no hay tema tirar 0
+        //incluir en autores los que hay al final
+        [System.Web.Mvc.HttpPatch]
+        public void Patch(int IdEntrada, string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema, bool visible)
+        {
+            DateTime fechaActual = DateTime.Today;
+            ENTRADA nueva = new ENTRADA
+            {
+                IdEntrada = IdEntrada,
+                Abstract = Abstract,
+                Body = Body,
+                Visible = visible,
+                FechaMod = fechaActual,
+                Carrera = IdCarrera,
+                Curso = (curso == "0") ? null : curso
+            };
+            if (idTema != 0)
+            {
+                nueva.Tema = idTema;
+            }
+            apiEntrada.modEntrada(nueva);
+            List<AUTORENTRADA> autoresViejos = apiAutores.getAllAutoresEntrada().Where(a => a.IdEntrada == IdEntrada).ToList();
+            String[] autoresNuevos = autores.Split(',');
+            foreach (AUTORENTRADA aUTORENTRADA in autoresViejos) {
+                if (!autoresNuevos.Contains(aUTORENTRADA.Carnet.ToString())) {
+                    apiAutores.deleteAutoresEntrada(aUTORENTRADA.IdAutorEntrada);
+                }
+            }
+            List<int> carnetsViejos = autoresViejos.Select(c => c.Carnet).ToList();
+
+            foreach (string autorNuevo in autoresNuevos) {
+                if (!carnetsViejos.Contains(int.Parse(autorNuevo)))
+                {
+                    apiAutores.setAutorEntrada(new AUTORENTRADA
+                    {
+                        Carnet = int.Parse(autorNuevo),
+                        IdEntrada = IdEntrada
+                    });
+                }
+            }
         }
     }
 }

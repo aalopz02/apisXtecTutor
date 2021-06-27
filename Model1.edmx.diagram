@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="XTecTutorDBModel.ENTRADA" Width="1.5" PointX="6.5" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="XTecTutorDBModel.ESTUDIANTE" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="XTecTutorDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="XTecTutorDBModel.TEMA" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XTecTutorDBModel.TEMA" Width="1.5" PointX="3.5" PointY="12.5" IsExpanded="true" />
         <AssociationConnector Association="XTecTutorDBModel.FK__ARCHIVOEN__IdEnt__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="XTecTutorDBModel.FK__AUTORENTR__Carne__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="XTecTutorDBModel.FK__AUTORENTR__IdEnt__5535A963" ManuallyRouted="false" />

@@ -50,6 +50,15 @@ namespace apisBlog.Models.ApisImpl
             }
         }
 
+        public void modEntrada(ARCHIVOENTRADA mod)
+        {
+            using (var context = new XTecTutorDBEntities())
+            {
+                context.ARCHIVOENTRADAs.FirstOrDefault(z => z.IdArchivoEntrada == mod.IdArchivoEntrada).Path = mod.Path;
+                context.SaveChanges();
+            }
+        }
+
         public bool setArchivoEntrada(ARCHIVOENTRADA nuevo)
         {
             using (var context = new XTecTutorDBEntities())
