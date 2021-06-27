@@ -187,11 +187,14 @@
     <Compile Include="Controllers\AutoresController.cs" />
     <Compile Include="Controllers\BusquedasFechaController.cs" />
     <Compile Include="Controllers\CalificacionController.cs" />
+    <Compile Include="Controllers\CarreraController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TemaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="CURSO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -337,10 +340,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Autores\" />
     <Folder Include="Views\Calificacion\" />
+    <Folder Include="Views\Carrera\" />
     <Folder Include="Views\Comenatarios\" />
+    <Folder Include="Views\Curso\" />
     <Folder Include="Views\Entrada\" />
     <Folder Include="Views\Files\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Tema\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
