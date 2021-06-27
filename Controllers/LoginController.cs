@@ -12,11 +12,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace apisBlog.Controllers
 {
+    [TestClass]
     public class LoginController : ApiController
     {
         AdminI apiAdmin = new AdminImpl();
         EstudianteI apiEstudiante = new EstudianteImpl();
 
+        [TestMethod]
+        public void test() {
+      
+
+    }
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

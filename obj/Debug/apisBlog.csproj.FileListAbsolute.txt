@@ -261,3 +261,4 @@ E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CoreCompileInputs.ca
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CopyComplete
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.dll
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.pdb
+E:\Documents\GitHub\apisXtecTutor\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
