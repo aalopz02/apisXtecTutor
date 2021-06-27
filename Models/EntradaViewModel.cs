@@ -11,9 +11,9 @@ namespace apisBlog.Models
         public List<AutorModel> listaAutores { set; get; }
         public string calificacion { get; set; }
         public int IdEntrada { get; set; }
-        public int Carrera { get; set; }
+        public string Carrera { get; set; }
         public string Curso { get; set; }
-        public int Tema { get; set; }
+        public string Tema { get; set; }
         public System.DateTime FechaCrear { get; set; }
         public System.DateTime FechaMod { get; set; }
         public int Vistas { get; set; }

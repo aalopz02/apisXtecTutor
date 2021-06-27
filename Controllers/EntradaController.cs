@@ -21,6 +21,9 @@ namespace apisBlog.Controllers
         EntradaI apiEntrada = new EntradasMock();
         EstudianteI apiEstudiante = new EstudiantesMock();
         AutorEntradaI apiAutores = new AutoresMock();
+        CarreraI apiCarreras = new CarreraMock();
+        CursoI apiCursos = new CursoMock();
+        TemaI apiTemas = new TemaMock();
 
         [TestMethod]
         public void set() {
@@ -38,10 +41,14 @@ namespace apisBlog.Controllers
             entradaView.Vistas = eNTRADA.Vistas;
             entradaView.Abstract = eNTRADA.Abstract;
             entradaView.Body = eNTRADA.Body;
-            entradaView.Carrera = eNTRADA.Carrera;
-            entradaView.Curso = eNTRADA.Curso;
-            if (eNTRADA.Tema != null || eNTRADA.Tema != 0) {
-                entradaView.Tema = (int)eNTRADA.Tema;
+            entradaView.Carrera = apiCarreras.getCarrera(eNTRADA.Carrera).Nombre;
+            entradaView.Curso = apiCursos.getCurso(eNTRADA.Curso).Nombre;
+            if (eNTRADA.Tema != null || eNTRADA.Tema != 0)
+            {
+                entradaView.Tema = "";
+            }
+            else {
+                entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
             }
             entradaView.FechaCrear = eNTRADA.FechaCrear;
             entradaView.FechaMod = eNTRADA.FechaMod;
