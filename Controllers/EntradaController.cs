@@ -140,7 +140,7 @@ namespace apisBlog.Controllers
         }
 
         //https://localhost:44395/api/Entrada?IdEntrada=id&titulo=eltitulo&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0&visible=true
-        //usar true y false, para valor
+        //usar true y false, para visibilidad
         //Si no hay curso tirar "0"
         //Si no hay tema tirar 0
         //incluir en autores los que hay al final

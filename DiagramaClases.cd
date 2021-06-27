@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="apisBlog.Controllers.AutoresController">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <AssociationLine Name="EstudianteI" Type="apisBlog.Models.ApisI.EstudianteI" FixedFromPoint="true">
+      <Path>
+        <Point X="5.25" Y="2.438" />
+        <Point X="6.5" Y="2.438" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AutorEntradaI" Type="apisBlog.Models.ApisI.AutorEntradaI" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="2.125" />
+        <Point X="5.625" Y="2.125" />
+        <Point X="5.625" Y="1.281" />
+        <Point X="6.5" Y="1.281" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAABAAAEAgAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AutoresController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EstudianteI" />
+      <Property Name="AutorEntradaI" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="apisBlog.Models.AutorModel">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AutorModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="apisBlog.ESTUDIANTE">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAEAIAIoAAAAIAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ESTUDIANTE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="apisBlog.Models.ApisI.AutorEntradaI" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\ApisI\AutorEntradaI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="apisBlog.Models.ApisI.EstudianteI" Collapsed="true">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAgAAAAAAAAAACAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\ApisI\EstudianteI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

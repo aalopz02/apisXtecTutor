@@ -33,6 +33,7 @@
     <Property Name="IdEntrada" Type="int" Nullable="false" />
     <Property Name="Carnet" Type="int" Nullable="false" />
     <Property Name="Calificacion" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <EntityType Name="CARRERA">
     <Key>
@@ -49,6 +50,7 @@
     <Property Name="IdEntrada" Type="int" Nullable="false" />
     <Property Name="Carnet" Type="int" Nullable="false" />
     <Property Name="Contenido" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <EntityType Name="CURSO">
     <Key>
@@ -72,6 +74,7 @@
     <Property Name="Visible" Type="bit" Nullable="false" />
     <Property Name="Abstract" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="Body" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ESTUDIANTE">
     <Key>
