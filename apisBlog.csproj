@@ -239,7 +239,6 @@
     <Compile Include="Models\ApisI\TemaI.cs" />
     <Compile Include="Models\ApisModel\BusquedaFechaModel.cs" />
     <Compile Include="Models\ApisModel\BusquedaRelevanciaModel.cs" />
-    <Compile Include="Models\BusquedaFechaModel.cs" />
     <Compile Include="Models\Mocks\AdminMock.cs" />
     <Compile Include="Models\Mocks\ArchivoEntradaMock.cs" />
     <Compile Include="Models\Mocks\AutoresMock.cs" />
