@@ -69,7 +69,8 @@ namespace apisBlog.Models.Mocks
 
         public bool setCalificacion(CALIFICACIONENTRADA nuevo)
         {
-            throw new NotImplementedException();
+            listaCalifiaciones.Add(nuevo);
+            return true;
         }
     }
 }
