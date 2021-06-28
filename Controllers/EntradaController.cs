@@ -25,8 +25,10 @@ namespace apisBlog.Controllers
         CursoI apiCursos = new CursoMock();
         TemaI apiTemas = new TemaMock();
 
+
         [TestMethod]
-        public void set() {
+        public void set()
+        {
             apiEntrada = new EntradasMock();
             apiEstudiante = new EstudiantesMock();
             apiAutores = new AutoresMock();
@@ -34,7 +36,8 @@ namespace apisBlog.Controllers
 
         [System.Web.Mvc.HttpGet]
         //https://localhost:44395/api/Entrada?idEntrada=123
-        public EntradaViewModel getById(int idEntrada) {
+        public EntradaViewModel getById(int idEntrada)
+        {
 
             EntradaViewModel entradaView = new EntradaViewModel();
             ENTRADA eNTRADA = apiEntrada.getEntrada(idEntrada);
@@ -47,7 +50,8 @@ namespace apisBlog.Controllers
             {
                 entradaView.Tema = "";
             }
-            else {
+            else
+            {
                 entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
             }
             entradaView.FechaCrear = eNTRADA.FechaCrear;
@@ -57,9 +61,11 @@ namespace apisBlog.Controllers
             entradaView.listaAutores = new AutoresController().getAutores(idEntrada).ToList();
             List<COMENTARIOENTRADA> listaComentarios = new ComentariosController().getForEntrada(idEntrada).ToList();
             entradaView.listaComentario = new List<ComentarioModel>();
-            foreach (COMENTARIOENTRADA cOMENTARIOENTRADA in listaComentarios) {
+            foreach (COMENTARIOENTRADA cOMENTARIOENTRADA in listaComentarios)
+            {
                 ESTUDIANTE estudiante = apiEstudiante.getEstudiante(cOMENTARIOENTRADA.Carnet);
-                entradaView.listaComentario.Add(new ComentarioModel {
+                entradaView.listaComentario.Add(new ComentarioModel
+                {
                     body = cOMENTARIOENTRADA.Contenido,
                     carnet = estudiante.Carnet,
                     nombre = estudiante.Nombre,
@@ -80,7 +86,8 @@ namespace apisBlog.Controllers
                 IEnumerable<int> entradasHechas = apiAutores.getAllAutoresEntrada().Where(c => c.Carnet == carnet).Select(c => c.IdEntrada);
                 IEnumerable<ENTRADA> listaRetorno = apiEntrada.getAllEntradas().Where(e => entradasHechas.Contains(e.IdEntrada));
                 List<ENTRADA> aux = new List<ENTRADA>();
-                foreach (ENTRADA entrada in listaRetorno) {
+                foreach (ENTRADA entrada in listaRetorno)
+                {
                     aux.Add(new ENTRADA
                     {
                         Titulo = entrada.Titulo,
@@ -94,12 +101,13 @@ namespace apisBlog.Controllers
                         FechaCrear = entrada.FechaCrear,
                         FechaMod = entrada.FechaMod,
                         IdEntrada = entrada.IdEntrada
-                    }) ;
-                    
+                    });
+
                 }
                 return aux;
             }
-            else {
+            else
+            {
                 return null;
             }
         }
@@ -108,7 +116,8 @@ namespace apisBlog.Controllers
         //Si no hay curso tirar "0"
         //Si no hay tema tirar 0
         [System.Web.Mvc.HttpPost]
-        public ENTRADA Posts(string titulo, string Abstract, string Body, string autores,int IdCarrera, String curso, int idTema) {
+        public ENTRADA Posts(string titulo, string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema)
+        {
             DateTime fechaActual = DateTime.Today;
             ENTRADA nueva = new ENTRADA
             {
@@ -122,12 +131,14 @@ namespace apisBlog.Controllers
                 Carrera = IdCarrera,
                 Curso = (curso == "0") ? null : curso
             };
-            if (idTema != 0) {
+            if (idTema != 0)
+            {
                 nueva.Tema = idTema;
             }
             apiEntrada.setEntrada(nueva);
             int id = apiEntrada.getAllEntradas().Last().IdEntrada;
-            foreach (string carnetAutor in autores.Split(',')) {
+            foreach (string carnetAutor in autores.Split(','))
+            {
                 AUTORENTRADA nuevoAutor = new AUTORENTRADA
                 {
                     Carnet = int.Parse(carnetAutor),
@@ -145,7 +156,7 @@ namespace apisBlog.Controllers
         //Si no hay tema tirar 0
         //incluir en autores los que hay al final
         [System.Web.Mvc.HttpPatch]
-        public void Patch(int IdEntrada,string titulo ,string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema, bool visible)
+        public void Patch(int IdEntrada, string titulo, string Abstract, string Body, string autores, int IdCarrera, String curso, int idTema, bool visible)
         {
             DateTime fechaActual = DateTime.Today;
             ENTRADA nueva = new ENTRADA
@@ -166,14 +177,17 @@ namespace apisBlog.Controllers
             apiEntrada.modEntrada(nueva);
             List<AUTORENTRADA> autoresViejos = apiAutores.getAllAutoresEntrada().Where(a => a.IdEntrada == IdEntrada).ToList();
             String[] autoresNuevos = autores.Split(',');
-            foreach (AUTORENTRADA aUTORENTRADA in autoresViejos) {
-                if (!autoresNuevos.Contains(aUTORENTRADA.Carnet.ToString())) {
+            foreach (AUTORENTRADA aUTORENTRADA in autoresViejos)
+            {
+                if (!autoresNuevos.Contains(aUTORENTRADA.Carnet.ToString()))
+                {
                     apiAutores.deleteAutoresEntrada(aUTORENTRADA.IdAutorEntrada);
                 }
             }
             List<int> carnetsViejos = autoresViejos.Select(c => c.Carnet).ToList();
 
-            foreach (string autorNuevo in autoresNuevos) {
+            foreach (string autorNuevo in autoresNuevos)
+            {
                 if (!carnetsViejos.Contains(int.Parse(autorNuevo)))
                 {
                     apiAutores.setAutorEntrada(new AUTORENTRADA

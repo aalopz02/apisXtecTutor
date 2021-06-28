@@ -15,22 +15,6 @@ namespace apisBlog.Controllers
         AutorEntradaI apiAutores = new AutoresMock();
         EstudianteI apiEstudiante = new EstudiantesMock();
 
-        internal EstudianteI EstudianteI
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal AutorEntradaI AutorEntradaI
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         //https://localhost:44395/api/Autores?IdEntrada=123
         [System.Web.Mvc.HttpGet]
         // GET: Autores
