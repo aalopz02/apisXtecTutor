@@ -7,16 +7,41 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace apisBlog.Controllers
 {
+    [TestClass]
     public class AutoresController : ApiController
     {
         AutorEntradaI apiAutores = new AutoresMock();
         EstudianteI apiEstudiante = new EstudiantesMock();
 
-        //https://localhost:44395/api/Autores?IdEntrada=123
-        [System.Web.Mvc.HttpGet]
+        /// <summary>
+        /// Test method for Autores
+        /// </summary>
+        [TestMethod]
+        public void test()
+        {
+            apiAutores = new AutoresMock();
+            apiEstudiante = new EstudiantesMock();
+
+            IEnumerable<AutorModel> prueba1 = getAutores(1);
+            Assert.AreEqual(2017075875, prueba1.First().carnet, "Problema getAutores");
+            Assert.AreEqual("nombre1", prueba1.First().nombre, "Problema getAutores");
+            Assert.AreEqual("apellido1", prueba1.First().apellido, "Problema getAutores");
+            Assert.AreEqual(2, prueba1.Count(), "Problema getAutores");
+
+
+        }
+
+            /// <summary>
+            /// Metodo get Autores
+            /// </summary>
+            /// <param name="IdEntrada"></param>
+            /// <returns>AutorModel</returns>
+            //https://localhost:44395/api/Autores?IdEntrada=123
+            [System.Web.Mvc.HttpGet]
         // GET: Autores
         public IEnumerable<AutorModel> getAutores(int IdEntrada)
         {

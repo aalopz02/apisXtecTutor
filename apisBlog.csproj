@@ -248,7 +248,6 @@
     <Compile Include="Models\ApisModel\BusquedaFechaModel.cs" />
     <Compile Include="Models\ApisModel\BusquedaRelevanciaModel.cs" />
     <Compile Include="Models\AutorModel.cs" />
-    <Compile Include="Models\BusquedaFechaModel.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\EntradaViewModel.cs" />
     <Compile Include="Models\FileHandler.cs" />

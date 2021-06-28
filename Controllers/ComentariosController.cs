@@ -6,12 +6,26 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace apisBlog.Controllers
 {
+    [TestClass]
     public class ComentariosController : ApiController
     {
         ComentarioEntradaI apiComentarios = new ComentarioEntradaMock();
+
+        [TestMethod]
+        public void test()
+        {
+            apiComentarios = new ComentarioEntradaMock();
+            IEnumerable<COMENTARIOENTRADA> prueba1 = getForEntrada(1);
+            Assert.AreEqual("contenidoX", prueba1.First().Contenido, "Problema getComentarios");
+            setComentario(1, 2017075875, "contenidoCambiado");
+            Assert.AreEqual("contenidoCambiado", prueba1.First().Contenido, "Problema getComentarios");
+            delete(1);
+            Assert.AreEqual("contenidoX2.0", prueba1.First().Contenido, "Problema getComentarios");
+        }
 
         //https://localhost:44395/api/Comentarios?IdEntrada=123
         [System.Web.Mvc.HttpGet]

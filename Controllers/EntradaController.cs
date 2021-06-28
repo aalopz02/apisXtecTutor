@@ -32,8 +32,38 @@ namespace apisBlog.Controllers
             apiEntrada = new EntradasMock();
             apiEstudiante = new EstudiantesMock();
             apiAutores = new AutoresMock();
+            apiCarreras = new CarreraMock();
+            apiCursos = new CursoMock();
+            apiTemas = new TemaMock();
+            EntradaViewModel prueba1getbyid = getById(1);
+            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyID");
+            Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyID");
+
+            IEnumerable<ENTRADA> prueba2getbyauthor = getByAutor(2017075877);
+            Assert.AreEqual(1, prueba1getbyid.IdEntrada, "Problema getEntradasbyAutor");
+            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyAutor");
+            Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyAutor");
+
+            Patch(1, "TITULOCambiado", "SUPER ABSTRACT Cambiado", "EPSILON Cambiado", "2017075877", 3, "CE-01", 3,true);
+            EntradaViewModel pruebapatch = getById(1);
+            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getCursos");
+            Assert.AreEqual("TITULOCambiado", pruebapatch.titulo, "Problema patchEntrada");
+            Assert.AreEqual("SUPER ABSTRACT Cambiado", pruebapatch.Abstract, "Problema patchEntrada");
+            Assert.AreEqual("EPSILON Cambiado", pruebapatch.Body, "Problema patchEntrada");
+
+            Posts("TITULO", "SUPER ABSTRACT", "EPSILON", "2017075877", 3, "CE-01", 3);
+            EntradaViewModel pruebapost = getById(3);
+            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema postEntrada");
+            Assert.AreEqual("TITULO", pruebapost.titulo, "Problema postEntrada");
+            Assert.AreEqual("EPSILON", pruebapost.Body, "Problema postEntrada");
+
         }
 
+        /// <summary>
+        /// Metodo get by id Entradas
+        /// </summary>
+        /// <param name="idEntrada"></param>
+        /// <returns></returns>
         [System.Web.Mvc.HttpGet]
         //https://localhost:44395/api/Entrada?idEntrada=123
         public EntradaViewModel getById(int idEntrada)
@@ -75,8 +105,12 @@ namespace apisBlog.Controllers
             entradaView.titulo = eNTRADA.Titulo;
             return entradaView;
         }
-
-        [System.Web.Mvc.HttpGet]
+        /// <summary>
+        /// Metodo para get entradas by author
+        /// </summary>
+        /// <param name="carnet"></param>
+        /// <returns>Ienumerable de entradas</returns>
+        [System.Web.Mvc.HttpGet]  
         //https://localhost:44395/api/Entrada?carnet=123
         public IEnumerable<ENTRADA> getByAutor(int carnet)
         {
@@ -111,7 +145,17 @@ namespace apisBlog.Controllers
                 return null;
             }
         }
-
+        /// <summary>
+        /// Metodo para crear entrada
+        /// </summary>
+        /// <param name="titulo"></param>
+        /// <param name="Abstract"></param>
+        /// <param name="Body"></param>
+        /// <param name="autores"></param>
+        /// <param name="IdCarrera"></param>
+        /// <param name="curso"></param>
+        /// <param name="idTema"></param>
+        /// <returns>Entrada</returns>
         //https://localhost:44395/api/Entrada?titulo=eltitulo&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0
         //Si no hay curso tirar "0"
         //Si no hay tema tirar 0
@@ -150,6 +194,18 @@ namespace apisBlog.Controllers
             return nueva;
         }
 
+        /// <summary>
+        /// Metodo para editar entrada
+        /// </summary>
+        /// <param name="IdEntrada"></param>
+        /// <param name="titulo"></param>
+        /// <param name="Abstract"></param>
+        /// <param name="Body"></param>
+        /// <param name="autores"></param>
+        /// <param name="IdCarrera"></param>
+        /// <param name="curso"></param>
+        /// <param name="idTema"></param>
+        /// <param name="visible"></param>
         //https://localhost:44395/api/Entrada?IdEntrada=id&titulo=eltitulo&Abstract=cacaca&Body=cacacacaca&autores=carnet1,carnet2&IdCarrera=1&Curso=0&IdTema=0&visible=true
         //usar true y false, para visibilidad
         //Si no hay curso tirar "0"

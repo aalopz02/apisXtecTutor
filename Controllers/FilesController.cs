@@ -13,6 +13,11 @@ namespace apisBlog.Controllers
     public class FilesController : ApiController
     {
         ArchivoEntradaI apiArchivos = new ArchivoEntradaImpl();
+        /// <summary>
+        /// /Metodo para manejo de archivos
+        /// </summary>
+        /// <param name="IdEntrada"></param>
+        /// <param name="file"></param>
         // GET: Files
         public void setFile(int IdEntrada,[FromBody] FileModel file)
         {

@@ -95,7 +95,7 @@ namespace apisBlog.Controllers
                 var cantidadcomentarios = apiComentarios.getAllComentarios().GroupBy(e => e.IdEntrada).Select(group => Tuple.Create(group.Key, group.Count())) ;
                 int ccomentarios = cantidadcomentarios.Select(e => e.Item2).Max();
                 int Numcomentarios = apiComentarios.getAllComentarios().Where(e => e.IdEntrada == entrada.IdEntrada).Count();
-
+                
 
                 try
                 {
