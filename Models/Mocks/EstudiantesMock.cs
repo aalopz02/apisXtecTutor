@@ -62,9 +62,21 @@ namespace apisBlog.Models.Mocks
             return null;
         }
 
+        public void modEstudiante(ESTUDIANTE viejo)
+        {
+            for (int i = 0; i < listaEstudiantes.Count; i++)
+            {
+                if (listaEstudiantes[i].Carnet == viejo.Carnet)
+                {
+                    listaEstudiantes[i].ClavePublica = viejo.ClavePublica;
+                }
+            }
+        }
+
         public bool setEstudiante(ESTUDIANTE nuevo)
         {
-            throw new NotImplementedException();
+            listaEstudiantes.Add(nuevo);
+            return true;
         }
     }
 }

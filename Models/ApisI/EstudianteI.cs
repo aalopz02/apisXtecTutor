@@ -12,5 +12,6 @@ namespace apisBlog.Models.ApisI
         bool setEstudiante(ESTUDIANTE nuevo);
         List<ESTUDIANTE> getAllEstudiantes();
         bool deleteEstudiante(int Carnet);
+        void modEstudiante(ESTUDIANTE viejo);
     }
 }

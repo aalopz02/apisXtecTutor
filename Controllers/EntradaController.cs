@@ -18,12 +18,12 @@ namespace apisBlog.Controllers
         //EntradaI apiEntrada = new EntradaImpl();
         //EstudianteI apiEstudiante = new EstudianteImpl();
         //AutorEntradaI apiAutores = new AutorEntradaImpl();
-        EntradaI apiEntrada = new EntradasMock();
-        EstudianteI apiEstudiante = new EstudiantesMock();
         AutorEntradaI apiAutores = new AutoresMock();
+        EntradaI apiEntrada = new EntradasMock();
         CarreraI apiCarreras = new CarreraMock();
         CursoI apiCursos = new CursoMock();
         TemaI apiTemas = new TemaMock();
+        EstudianteI apiEstudiante = new EstudiantesMock();
 
 
         [TestMethod]
@@ -36,24 +36,24 @@ namespace apisBlog.Controllers
             apiCursos = new CursoMock();
             apiTemas = new TemaMock();
             EntradaViewModel prueba1getbyid = getById(1);
-            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyID");
+            Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyID");
             Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyID");
 
             IEnumerable<ENTRADA> prueba2getbyauthor = getByAutor(2017075877);
             Assert.AreEqual(1, prueba1getbyid.IdEntrada, "Problema getEntradasbyAutor");
-            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyAutor");
+            Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyAutor");
             Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyAutor");
 
             Patch(1, "TITULOCambiado", "SUPER ABSTRACT Cambiado", "EPSILON Cambiado", "2017075877", 3, "CE-01", 3,true);
             EntradaViewModel pruebapatch = getById(1);
-            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getCursos");
+            Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getCursos");
             Assert.AreEqual("TITULOCambiado", pruebapatch.titulo, "Problema patchEntrada");
             Assert.AreEqual("SUPER ABSTRACT Cambiado", pruebapatch.Abstract, "Problema patchEntrada");
             Assert.AreEqual("EPSILON Cambiado", pruebapatch.Body, "Problema patchEntrada");
 
             Posts("TITULO", "SUPER ABSTRACT", "EPSILON", "2017075877", 3, "CE-01", 3);
-            EntradaViewModel pruebapost = getById(3);
-            //Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema postEntrada");
+            EntradaViewModel pruebapost = getById(0);
+            Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema postEntrada");
             Assert.AreEqual("TITULO", pruebapost.titulo, "Problema postEntrada");
             Assert.AreEqual("EPSILON", pruebapost.Body, "Problema postEntrada");
 
@@ -78,11 +78,11 @@ namespace apisBlog.Controllers
             entradaView.Curso = apiCursos.getCurso(eNTRADA.Curso).Nombre;
             if (eNTRADA.Tema != null || eNTRADA.Tema != 0)
             {
-                entradaView.Tema = "";
+                entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
             }
             else
             {
-                entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
+                entradaView.Tema = "";
             }
             entradaView.FechaCrear = eNTRADA.FechaCrear;
             entradaView.FechaMod = eNTRADA.FechaMod;

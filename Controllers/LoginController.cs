@@ -58,10 +58,6 @@ namespace apisBlog.Controllers
 
         }
 
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
         /// <summary>
         /// Metodo para ver si es estudiante o admin
         /// </summary>
@@ -140,26 +136,6 @@ namespace apisBlog.Controllers
           
         }
 
-        // POST api/values
-        public void Post(string value)
-        {
-            apiAdmin.setAdmin(new ADMIN
-            {
-                Nombre = "admin",
-                Carnet = 123,
-                Apellido = "ap1",
-                ClavePublica = "clave"
-            });
-        }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
     }
 }

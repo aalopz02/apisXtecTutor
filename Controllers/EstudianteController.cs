@@ -23,7 +23,7 @@ namespace apisBlog.Controllers
             Assert.AreEqual("6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06", claveactual);
             patch(2017075875, "clavenueva");
             string clavenueva = apiEstudiante.getEstudiante(2017075875).ClavePublica;
-            Assert.AreEqual("clavenueva", clavenueva,"Problema cambio clave");
+            Assert.AreEqual("1908E1559A550096D6D324A4AF8A7D983C205B2A1019E844042E6F1270AEFDF4", clavenueva,"Problema cambio clave");
         }
         /// <summary>
         /// Metodo cambiar contrasena
@@ -37,7 +37,7 @@ namespace apisBlog.Controllers
             var sha256 = new SHA256Managed();
             string passwordSHA = BitConverter.ToString(sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(clave))).Replace("-", "");
             viejo.ClavePublica = passwordSHA;
-            apiEstudiante.setEstudiante(viejo);
+            apiEstudiante.modEstudiante(viejo);
         }
     }
 }
