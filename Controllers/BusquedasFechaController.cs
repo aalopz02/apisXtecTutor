@@ -211,7 +211,17 @@ namespace apisBlog.Controllers
         //api/BusquedasFecha?fecha=03/12/22&carrera=1&curso=1&tema=1
         public IEnumerable<BusquedaFechaModel> Get(string fecha, int carrera, string curso, int tema)
         {
-            IEnumerable<ENTRADA> entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera== carrera & e.Curso == curso & e.Tema==tema).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            IEnumerable<ENTRADA> entradas;
+            if (curso=="") {
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            }
+            else if (tema==0 & curso!="")
+            {
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            }
+            else {
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso & e.Tema == tema).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            }
             List<BusquedaFechaModel> aux = new List<BusquedaFechaModel>();
             foreach (ENTRADA entrada in entradas)
             {
