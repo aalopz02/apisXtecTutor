@@ -83,7 +83,6 @@ namespace apisBlog.Controllers
             }
         }
 
-
         /// <summary>
         /// Metodo para iniciar sesion
         /// </summary>
@@ -93,7 +92,6 @@ namespace apisBlog.Controllers
         // GET api/Login?carnet=1234&password=clave
         public Object Get(int carnet,string password)
         {
-
             var sha256 = new SHA256Managed();
             string passwordSHA=BitConverter.ToString(sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "");
             if (apiAdmin.getAdmin(carnet) != null)

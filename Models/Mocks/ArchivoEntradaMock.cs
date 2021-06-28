@@ -14,19 +14,19 @@ namespace apisBlog.Models.Mocks
             listaArchivos.Add(new ARCHIVOENTRADA {
                 IdArchivoEntrada = 1,
                 IdEntrada = 1,
-                Path = "elpath1"
+                Path = "pat.jpg"
             });
             listaArchivos.Add(new ARCHIVOENTRADA
             {
                 IdArchivoEntrada = 2,
                 IdEntrada = 1,
-                Path = "elpath2"
+                Path = "pat.jpg"
             });
             listaArchivos.Add(new ARCHIVOENTRADA
             {
                 IdArchivoEntrada = 3,
                 IdEntrada = 2,
-                Path = "elpath1"
+                Path = "pat.jpg"
             });
         }
 
@@ -48,6 +48,17 @@ namespace apisBlog.Models.Mocks
                 }
             }
             return null;
+        }
+
+        public void modEntrada(ARCHIVOENTRADA mod)
+        {
+            foreach (ARCHIVOENTRADA aRCHIVOENTRADA in listaArchivos)
+            {
+                if (aRCHIVOENTRADA.IdArchivoEntrada == mod.IdArchivoEntrada)
+                {
+                    aRCHIVOENTRADA.Path = mod.Path;
+                }
+            }
         }
 
         public bool setArchivoEntrada(ARCHIVOENTRADA nuevo)

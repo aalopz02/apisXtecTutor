@@ -51,6 +51,28 @@ namespace apisBlog.Models.ApisImpl
             }
         }
 
+        public void modEntrada(ENTRADA nueva)
+        {
+            using (var context = new XTecTutorDBEntities())
+            {
+                for (int i = 0; i < context.ENTRADAs.ToList().Count; i++) { 
+                        if (context.ENTRADAs.ToList()[i].IdEntrada == nueva.IdEntrada)
+                        {
+                            context.ENTRADAs.ToList()[i].Abstract = nueva.Abstract;
+                            context.ENTRADAs.ToList()[i].Body = nueva.Body;
+                            context.ENTRADAs.ToList()[i].Carrera = nueva.Carrera;
+                            context.ENTRADAs.ToList()[i].Curso = nueva.Curso;
+                            context.ENTRADAs.ToList()[i].Tema = nueva.Tema;
+                            context.ENTRADAs.ToList()[i].Visible = nueva.Visible;
+                            context.ENTRADAs.ToList()[i].FechaMod = nueva.FechaMod;
+                            context.SaveChanges();
+                            return;
+                        }
+                }
+            }
+            
+        }
+
         public bool setEntrada(ENTRADA entrada)
         {
             using (var context = new XTecTutorDBEntities())

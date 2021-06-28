@@ -15,35 +15,40 @@ namespace apisBlog.Models.Mocks
                 IdCalificacion = 1,
                 IdEntrada = 1,
                 Carnet = 2017075875,
-                Calificacion = 4
+                Calificacion = 4,
+                Fecha = System.DateTime.Today
             });
             listaCalifiaciones.Add(new CALIFICACIONENTRADA
             {
                 IdCalificacion = 2,
                 IdEntrada = 1,
                 Carnet = 2017075876,
-                Calificacion = 3
+                Calificacion = 3,
+                Fecha = System.DateTime.Today
             });
             listaCalifiaciones.Add(new CALIFICACIONENTRADA
             {
                 IdCalificacion = 3,
                 IdEntrada = 1,
                 Carnet = 2017075877,
-                Calificacion = 8
+                Calificacion = 8,
+                Fecha = System.DateTime.Today
             });
             listaCalifiaciones.Add(new CALIFICACIONENTRADA
             {
                 IdCalificacion = 4,
                 IdEntrada = 2,
                 Carnet = 2017075875,
-                Calificacion = 4
+                Calificacion = 4,
+                Fecha = System.DateTime.Today
             });
             listaCalifiaciones.Add(new CALIFICACIONENTRADA
             {
                 IdCalificacion = 5,
                 IdEntrada = 2,
                 Carnet = 2017075876,
-                Calificacion = 10
+                Calificacion = 10,
+                Fecha = System.DateTime.Today
             });
         }
 
@@ -69,7 +74,8 @@ namespace apisBlog.Models.Mocks
 
         public bool setCalificacion(CALIFICACIONENTRADA nuevo)
         {
-            throw new NotImplementedException();
+            listaCalifiaciones.Add(nuevo);
+            return true;
         }
     }
 }

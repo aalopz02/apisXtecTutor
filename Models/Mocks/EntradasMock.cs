@@ -21,7 +21,8 @@ namespace apisBlog.Models.Mocks
                 Tema = 1,
                 FechaCrear = DateTime.Today,
                 FechaMod = DateTime.Today,
-                IdEntrada = 1
+                IdEntrada = 1,
+                Titulo = "titulo"
             });
             listaEntradas.Add(new ENTRADA
             {
@@ -34,7 +35,8 @@ namespace apisBlog.Models.Mocks
                 Tema = 2,
                 FechaCrear = DateTime.Today,
                 FechaMod = DateTime.Today,
-                IdEntrada = 2
+                IdEntrada = 2,
+                Titulo = "titulo2"
             });
         }
 
@@ -58,9 +60,28 @@ namespace apisBlog.Models.Mocks
             return null;
         }
 
-        public bool setEntrada(ENTRADA entrada)
+        public bool setEntrada(ENTRADA nueva)
         {
-            throw new NotImplementedException();
+            listaEntradas.Add(nueva);
+            return true;
+        }
+
+        public void modEntrada(ENTRADA entrada)
+        {
+            for (int i =0; i < listaEntradas.Count; i++)
+            {
+                if (listaEntradas[i].IdEntrada == entrada.IdEntrada)
+                {
+                    listaEntradas[i].Abstract = entrada.Abstract;
+                    listaEntradas[i].Body = entrada.Body;
+                    listaEntradas[i].Carrera = entrada.Carrera;
+                    listaEntradas[i].Curso = entrada.Curso;
+                    listaEntradas[i].Tema = entrada.Tema;
+                    listaEntradas[i].Visible = entrada.Visible;
+                    listaEntradas[i].FechaMod = entrada.FechaMod;
+                    return;
+                }
+            }
         }
     }
 }

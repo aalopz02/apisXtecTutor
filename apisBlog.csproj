@@ -184,11 +184,19 @@
     <Compile Include="COMENTARIOENTRADA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AutoresController.cs" />
     <Compile Include="Controllers\BusquedasFechaController.cs" />
     <Compile Include="Controllers\BusquedasRelevanciaController.cs" />
+    <Compile Include="Controllers\CalificacionController.cs" />
+    <Compile Include="Controllers\CarreraController.cs" />
+    <Compile Include="Controllers\ComentariosController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
+    <Compile Include="Controllers\EstudianteController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TemaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="CURSO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -239,6 +247,12 @@
     <Compile Include="Models\ApisI\TemaI.cs" />
     <Compile Include="Models\ApisModel\BusquedaFechaModel.cs" />
     <Compile Include="Models\ApisModel\BusquedaRelevanciaModel.cs" />
+    <Compile Include="Models\AutorModel.cs" />
+    <Compile Include="Models\BusquedaFechaModel.cs" />
+    <Compile Include="Models\ComentarioModel.cs" />
+    <Compile Include="Models\EntradaViewModel.cs" />
+    <Compile Include="Models\FileHandler.cs" />
+    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\Mocks\AdminMock.cs" />
     <Compile Include="Models\Mocks\ArchivoEntradaMock.cs" />
     <Compile Include="Models\Mocks\AutoresMock.cs" />
@@ -328,8 +342,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Autores\" />
+    <Folder Include="Views\Calificacion\" />
+    <Folder Include="Views\Carrera\" />
+    <Folder Include="Views\Comenatarios\" />
+    <Folder Include="Views\Curso\" />
     <Folder Include="Views\Entrada\" />
+    <Folder Include="Views\Estudiante\" />
+    <Folder Include="Views\Files\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Tema\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
