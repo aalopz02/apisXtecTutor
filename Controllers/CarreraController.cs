@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
@@ -14,7 +15,7 @@ namespace apisBlog.Controllers
     public class CarreraController : ApiController
     {
         // GET: Carrera
-        CarreraI apiCarrera = new CarreraMock();
+        CarreraI apiCarrera = new CarreraImpl();
 
         [TestMethod]
         public void test()
@@ -34,7 +35,17 @@ namespace apisBlog.Controllers
         // GET: Curso
         public List<CARRERA> getCarreras()
         {
-            return apiCarrera.getAllCarreras();
+            List<CARRERA> listaAux = apiCarrera.getAllCarreras();
+            List<CARRERA> returList = new List<CARRERA>();
+            foreach (CARRERA aux in listaAux)
+            {
+                returList.Add(new CARRERA
+                {
+                    IdCarrera = aux.IdCarrera,
+                    Nombre = aux.Nombre
+                });
+            }
+            return returList;
         }
     }
 }

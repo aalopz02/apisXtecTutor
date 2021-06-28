@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
     [TestClass]
     public class ComentariosController : ApiController
     {
-        ComentarioEntradaI apiComentarios = new ComentarioEntradaMock();
+        ComentarioEntradaI apiComentarios = new ComentariosEntradaImpl();
 
         [TestMethod]
         public void test()

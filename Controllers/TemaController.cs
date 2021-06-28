@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
@@ -14,7 +15,7 @@ namespace apisBlog.Controllers
     public class TemaController : ApiController
     {
         // GET: Tema
-        TemaI apiTema = new TemaMock();
+        TemaI apiTema = new TemaImpl();
 
         [TestMethod]
         public void test()
@@ -33,7 +34,16 @@ namespace apisBlog.Controllers
         // GET: Curso
         public List<TEMA> getTemas()
         {
-            return apiTema.getAllTemas();
+            List<TEMA> listaAux = apiTema.getAllTemas();
+            List<TEMA> returList = new List<TEMA>();
+            foreach (TEMA aux in listaAux) {
+                returList.Add(new TEMA {
+                    IdTema = aux.IdTema,
+                    Nombre = aux.Nombre,
+                    IdCurso = aux.IdCurso
+                });
+            }
+            return returList;
         }
     }
 }

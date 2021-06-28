@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
     [TestClass]
     public class CalificacionController : ApiController
     {
-        CalificacionEntradaI apiCalificacion = new CalificacionEntradaMock();
+        CalificacionEntradaI apiCalificacion = new CalificacionEntradaImpl();
 
         [TestMethod]
         public void test()

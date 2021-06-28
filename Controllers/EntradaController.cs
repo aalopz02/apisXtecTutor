@@ -15,15 +15,12 @@ namespace apisBlog.Controllers
     [TestClass]
     public class EntradaController : ApiController
     {
-        //EntradaI apiEntrada = new EntradaImpl();
-        //EstudianteI apiEstudiante = new EstudianteImpl();
-        //AutorEntradaI apiAutores = new AutorEntradaImpl();
-        AutorEntradaI apiAutores = new AutoresMock();
-        EntradaI apiEntrada = new EntradasMock();
-        CarreraI apiCarreras = new CarreraMock();
-        CursoI apiCursos = new CursoMock();
-        TemaI apiTemas = new TemaMock();
-        EstudianteI apiEstudiante = new EstudiantesMock();
+        AutorEntradaI apiAutores = new AutorEntradaImpl();
+        EntradaI apiEntrada = new EntradaImpl();
+        CarreraI apiCarreras = new CarreraImpl();
+        CursoI apiCursos = new CursoImpl();
+        TemaI apiTemas = new TemaImpl();
+        EstudianteI apiEstudiante = new EstudianteImpl();
 
 
         [TestMethod]
