@@ -186,6 +186,7 @@
     </Compile>
     <Compile Include="Controllers\AutoresController.cs" />
     <Compile Include="Controllers\BusquedasFechaController.cs" />
+    <Compile Include="Controllers\BusquedasRelevanciaController.cs" />
     <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\CarreraController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
@@ -244,6 +245,8 @@
     <Compile Include="Models\ApisI\EntradaI.cs" />
     <Compile Include="Models\ApisI\EstudianteI.cs" />
     <Compile Include="Models\ApisI\TemaI.cs" />
+    <Compile Include="Models\ApisModel\BusquedaFechaModel.cs" />
+    <Compile Include="Models\ApisModel\BusquedaRelevanciaModel.cs" />
     <Compile Include="Models\AutorModel.cs" />
     <Compile Include="Models\BusquedaFechaModel.cs" />
     <Compile Include="Models\ComentarioModel.cs" />
