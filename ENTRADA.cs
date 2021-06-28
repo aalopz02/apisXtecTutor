@@ -33,6 +33,7 @@ namespace apisBlog
         public bool Visible { get; set; }
         public string Abstract { get; set; }
         public string Body { get; set; }
+        public string Titulo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARCHIVOENTRADA> ARCHIVOENTRADAs { get; set; }

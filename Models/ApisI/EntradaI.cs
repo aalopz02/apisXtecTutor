@@ -12,6 +12,6 @@ namespace apisBlog.Models.ApisI
         bool setEntrada(ENTRADA entrada);
         List<ENTRADA> getAllEntradas();
         bool deleteEntrada(int IdEntrada);
-
+        void modEntrada(ENTRADA nueva);
     }
 }

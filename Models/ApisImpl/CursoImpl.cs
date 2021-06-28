@@ -34,7 +34,7 @@ namespace apisBlog.Models.ApisImpl
             }
         }
 
-        public CURSO getCurso(int IdCurso)
+        public CURSO getCurso(string IdCurso)
         {
             using (var context = new XTecTutorDBEntities())
             {

@@ -32,6 +32,7 @@
     <EntitySetMapping Name="CALIFICACIONENTRADAs">
       <EntityTypeMapping TypeName="XTecTutorDBModel.CALIFICACIONENTRADA">
         <MappingFragment StoreEntitySet="CALIFICACIONENTRADA">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
           <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
           <ScalarProperty Name="Carnet" ColumnName="Carnet" />
@@ -50,6 +51,7 @@
     <EntitySetMapping Name="COMENTARIOENTRADAs">
       <EntityTypeMapping TypeName="XTecTutorDBModel.COMENTARIOENTRADA">
         <MappingFragment StoreEntitySet="COMENTARIOENTRADA">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
           <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
           <ScalarProperty Name="Carnet" ColumnName="Carnet" />
@@ -69,6 +71,7 @@
     <EntitySetMapping Name="ENTRADAs">
       <EntityTypeMapping TypeName="XTecTutorDBModel.ENTRADA">
         <MappingFragment StoreEntitySet="ENTRADA">
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="IdEntrada" ColumnName="IdEntrada" />
           <ScalarProperty Name="Carrera" ColumnName="Carrera" />
           <ScalarProperty Name="Curso" ColumnName="Curso" />
