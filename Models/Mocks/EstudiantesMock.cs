@@ -16,7 +16,7 @@ namespace apisBlog.Models.Mocks
                 Nombre = "nombre1",
                 Apellido = "apellido1",
                 Apellido2 = "apellido1.2",
-                ClavePublica = "6d5074b4bf2b913866157d7674f1eda042c5c614876de876f7512702d2572a06",
+                ClavePublica = "6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06",
                 Correo = "correo1"
 
             });
@@ -26,7 +26,7 @@ namespace apisBlog.Models.Mocks
                 Nombre = "nombre2",
                 Apellido = "apellido2",
                 Apellido2 = "apellido2.2",
-                ClavePublica = "6d5074b4bf2b913866157d7674f1eda042c5c614876de876f7512702d2572a06",
+                ClavePublica = "6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06",
                 Correo = "correo2"
 
             });
@@ -36,7 +36,7 @@ namespace apisBlog.Models.Mocks
                 Nombre = "nombre3",
                 Apellido = "apellido3",
                 Apellido2 = "apellid3.2",
-                ClavePublica = "6d5074b4bf2b913866157d7674f1eda042c5c614876de876f7512702d2572a06",
+                ClavePublica = "6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06",
                 Correo = "correo3"
 
             });
