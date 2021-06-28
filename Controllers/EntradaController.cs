@@ -15,15 +15,12 @@ namespace apisBlog.Controllers
     [TestClass]
     public class EntradaController : ApiController
     {
-        //EntradaI apiEntrada = new EntradaImpl();
-        //EstudianteI apiEstudiante = new EstudianteImpl();
-        //AutorEntradaI apiAutores = new AutorEntradaImpl();
-        AutorEntradaI apiAutores = new AutoresMock();
-        EntradaI apiEntrada = new EntradasMock();
-        CarreraI apiCarreras = new CarreraMock();
-        CursoI apiCursos = new CursoMock();
-        TemaI apiTemas = new TemaMock();
-        EstudianteI apiEstudiante = new EstudiantesMock();
+        AutorEntradaI apiAutores = new AutorEntradaImpl();
+        EntradaI apiEntrada = new EntradaImpl();
+        CarreraI apiCarreras = new CarreraImpl();
+        CursoI apiCursos = new CursoImpl();
+        TemaI apiTemas = new TemaImpl();
+        EstudianteI apiEstudiante = new EstudianteImpl();
 
 
         [TestMethod]
@@ -39,8 +36,7 @@ namespace apisBlog.Controllers
             Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyID");
             Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyID");
 
-            IEnumerable<ENTRADA> prueba2getbyauthor = getByAutor(2017075877);
-            Assert.AreEqual(1, prueba1getbyid.IdEntrada, "Problema getEntradasbyAutor");
+            IEnumerable<EntradaViewModel> prueba2getbyauthor = getByAutor(2017075877);
             Assert.AreEqual("tema1", prueba1getbyid.Tema, "Problema getEntradasbyAutor");
             Assert.AreEqual("el body", prueba1getbyid.Body, "Problema getEntradasbyAutor");
 
@@ -71,6 +67,7 @@ namespace apisBlog.Controllers
 
             EntradaViewModel entradaView = new EntradaViewModel();
             ENTRADA eNTRADA = apiEntrada.getEntrada(idEntrada);
+            entradaView.Visible = eNTRADA.Visible;
             entradaView.Vistas = eNTRADA.Vistas;
             entradaView.Abstract = eNTRADA.Abstract;
             entradaView.Body = eNTRADA.Body;
@@ -112,30 +109,31 @@ namespace apisBlog.Controllers
         /// <returns>Ienumerable de entradas</returns>
         [System.Web.Mvc.HttpGet]  
         //https://localhost:44395/api/Entrada?carnet=123
-        public IEnumerable<ENTRADA> getByAutor(int carnet)
+        public IEnumerable<EntradaViewModel> getByAutor(int carnet)
         {
             ESTUDIANTE autor = apiEstudiante.getEstudiante(carnet);
             if (autor != null)
             {
                 IEnumerable<int> entradasHechas = apiAutores.getAllAutoresEntrada().Where(c => c.Carnet == carnet).Select(c => c.IdEntrada);
                 IEnumerable<ENTRADA> listaRetorno = apiEntrada.getAllEntradas().Where(e => entradasHechas.Contains(e.IdEntrada));
-                List<ENTRADA> aux = new List<ENTRADA>();
+                List<EntradaViewModel> aux = new List<EntradaViewModel>();
                 foreach (ENTRADA entrada in listaRetorno)
                 {
-                    aux.Add(new ENTRADA
+                    aux.Add(new EntradaViewModel
                     {
-                        Titulo = entrada.Titulo,
+                        titulo = entrada.Titulo,
                         Visible = entrada.Visible,
                         Vistas = entrada.Vistas,
                         Abstract = entrada.Abstract,
                         Body = entrada.Body,
-                        Carrera = entrada.Carrera,
+                        Carrera = new CarreraController().getCarreras().FirstOrDefault(c => c.IdCarrera == entrada.Carrera).Nombre,
                         Curso = entrada.Curso,
-                        Tema = entrada.Tema,
+                        Tema = new TemaController().getTemas().FirstOrDefault(c => c.IdTema == entrada.Tema).Nombre,
                         FechaCrear = entrada.FechaCrear,
                         FechaMod = entrada.FechaMod,
-                        IdEntrada = entrada.IdEntrada
-                    });
+                        IdEntrada = entrada.IdEntrada,
+                        calificacion = new CalificacionController().getOverAll(entrada.IdEntrada).ToString()
+                    }) ;
 
                 }
                 return aux;

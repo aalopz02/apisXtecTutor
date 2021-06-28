@@ -8,13 +8,14 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
     [TestClass]
     public class EstudianteController : ApiController
     {
-        EstudianteI apiEstudiante = new EstudiantesMock();
+        EstudianteI apiEstudiante = new EstudianteImpl();
         [TestMethod]
         public void test()
         {

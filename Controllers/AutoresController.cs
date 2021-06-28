@@ -8,14 +8,15 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using apisBlog.Models.ApisImpl;
 
 namespace apisBlog.Controllers
 {
     [TestClass]
     public class AutoresController : ApiController
     {
-        AutorEntradaI apiAutores = new AutoresMock();
-        EstudianteI apiEstudiante = new EstudiantesMock();
+        AutorEntradaI apiAutores = new AutorEntradaImpl();
+        EstudianteI apiEstudiante = new EstudianteImpl();
 
         /// <summary>
         /// Test method for Autores
