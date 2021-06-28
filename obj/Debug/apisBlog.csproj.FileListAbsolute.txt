@@ -163,6 +163,7 @@ C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\System.Web.WebPages.Deplo
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\System.Web.WebPages.Razor.xml
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\Antlr3.Runtime.pdb
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\obj\Debug\apisBlog.csprojAssemblyReference.cache
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\obj\Debug\apisBlog.csproj.CoreCompileInputs.cache
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\obj\Debug\apisBlog.csproj.CopyComplete
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\obj\Debug\apisBlog.dll
@@ -255,10 +256,9 @@ E:\Documents\GitHub\apisXtecTutor\bin\System.Web.WebPages.Deployment.xml
 E:\Documents\GitHub\apisXtecTutor\bin\System.Web.WebPages.Razor.xml
 E:\Documents\GitHub\apisXtecTutor\bin\Antlr3.Runtime.pdb
 E:\Documents\GitHub\apisXtecTutor\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csprojAssemblyReference.cache
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CoreCompileInputs.cache
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csproj.CopyComplete
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.dll
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.pdb
+E:\Documents\GitHub\apisXtecTutor\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\obj\Debug\apisBlog.csprojAssemblyReference.cache
