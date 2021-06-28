@@ -25,14 +25,15 @@ namespace apisBlog.Controllers
             return promedio / calificaciones.Count();
         }
 
-        //https://localhost:44395/api/Calificacion?IdEntrada=123&Carnet=123
+        //https://localhost:44395/api/Calificacion?IdEntrada=123&Carnet=123&Calificacion=1
         [System.Web.Mvc.HttpPost]
-        public void calificar(int IdEntrada,int Carnet)
+        public void calificar(int IdEntrada,int Carnet,int Calificacion)
         {
             apiCalificacion.setCalificacion(new CALIFICACIONENTRADA {
                 IdEntrada = IdEntrada,
                 Carnet = Carnet,
-                Fecha = System.DateTime.Today
+                Fecha = System.DateTime.Today,
+                Calificacion = Calificacion
             });
         }
 
