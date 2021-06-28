@@ -58,6 +58,7 @@ namespace apisBlog.Models.ApisImpl
                 for (int i = 0; i < context.ENTRADAs.ToList().Count; i++) { 
                         if (context.ENTRADAs.ToList()[i].IdEntrada == nueva.IdEntrada)
                         {
+                            context.ENTRADAs.ToList()[i].Titulo = nueva.Titulo;
                             context.ENTRADAs.ToList()[i].Abstract = nueva.Abstract;
                             context.ENTRADAs.ToList()[i].Body = nueva.Body;
                             context.ENTRADAs.ToList()[i].Carrera = nueva.Carrera;

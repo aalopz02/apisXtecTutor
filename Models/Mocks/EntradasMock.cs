@@ -72,6 +72,7 @@ namespace apisBlog.Models.Mocks
             {
                 if (listaEntradas[i].IdEntrada == entrada.IdEntrada)
                 {
+                    listaEntradas[i].Titulo = entrada.Titulo;
                     listaEntradas[i].Abstract = entrada.Abstract;
                     listaEntradas[i].Body = entrada.Body;
                     listaEntradas[i].Carrera = entrada.Carrera;

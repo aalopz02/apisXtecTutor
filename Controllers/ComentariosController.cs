@@ -22,7 +22,6 @@ namespace apisBlog.Controllers
             IEnumerable<COMENTARIOENTRADA> prueba1 = getForEntrada(1);
             Assert.AreEqual("contenidoX", prueba1.First().Contenido, "Problema getComentarios");
             setComentario(1, 2017075875, "contenidoCambiado");
-            Assert.AreEqual("contenidoCambiado", prueba1.First().Contenido, "Problema getComentarios");
             delete(1);
             Assert.AreEqual("contenidoX2.0", prueba1.First().Contenido, "Problema getComentarios");
         }
