@@ -12,5 +12,6 @@ namespace apisBlog.Models.ApisI
         bool setArchivoEntrada(ARCHIVOENTRADA nuevo);
         List<ARCHIVOENTRADA> getAllArchivosEntrada();
         bool deleteArchivoEntrada(int IdArchivoEntrada);
+        void modEntrada(ARCHIVOENTRADA mod);
     }
 }

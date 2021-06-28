@@ -15,35 +15,41 @@ namespace apisBlog.Models.Mocks
                 IdComentario = 1,
                 IdEntrada = 1,
                 Carnet = 2017075875,
-                Contenido = "contenidoX"
+                Contenido = "contenidoX",
+                Fecha = System.DateTime.Today
             });
             listaComentarios.Add(new COMENTARIOENTRADA
             {
                 IdComentario = 2,
                 IdEntrada = 1,
                 Carnet = 2017075875,
-                Contenido = "contenidoX2.0"
+                Contenido = "contenidoX2.0",
+                Fecha = System.DateTime.Today
+
             });
             listaComentarios.Add(new COMENTARIOENTRADA
             {
                 IdComentario = 3,
                 IdEntrada = 1,
                 Carnet = 2017075876,
-                Contenido = "contenidoX"
+                Contenido = "contenidoX",
+                Fecha = System.DateTime.Today
             });
             listaComentarios.Add(new COMENTARIOENTRADA
             {
                 IdComentario = 4,
                 IdEntrada = 2,
                 Carnet = 2017075875,
-                Contenido = "contenidoX"
+                Contenido = "contenidoX",
+                Fecha = System.DateTime.Today
             });
             listaComentarios.Add(new COMENTARIOENTRADA
             {
                 IdComentario = 5,
                 IdEntrada = 2,
                 Carnet = 2017075875,
-                Contenido = "contenidoX2.0"
+                Contenido = "contenidoX2.0",
+                Fecha = System.DateTime.Today
             });
         }
 

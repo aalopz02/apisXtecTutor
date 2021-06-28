@@ -15,14 +15,14 @@ namespace apisBlog.Models.Mocks
                 Carnet = 123,
                 Nombre = "admin1",
                 Apellido = "apellido",
-                ClavePublica = "6d5074b4bf2b913866157d7674f1eda042c5c614876de876f7512702d2572a06"
+                ClavePublica = "6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06"
             });
             listaAdmins.Add(new ADMIN
             {
                 Carnet = 1234,
                 Nombre = "admin2",
                 Apellido = "apellido",
-                ClavePublica = "6d5074b4bf2b913866157d7674f1eda042c5c614876de876f7512702d2572a06"
+                ClavePublica = "6D5074B4BF2B913866157D7674F1EDA042C5C614876DE876F7512702D2572A06"
             });
         }
 

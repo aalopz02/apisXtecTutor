@@ -7,7 +7,7 @@
     <Property Name="Carnet" Type="Int32" Nullable="false" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ClavePublica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClavePublica" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ARCHIVOENTRADA">
     <Key>
@@ -15,7 +15,7 @@
     </Key>
     <Property Name="IdArchivoEntrada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdEntrada" Type="Int32" Nullable="false" />
-    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="true" />
     <NavigationProperty Name="ENTRADA" Relationship="Self.FK__ARCHIVOEN__IdEnt__534D60F1" FromRole="ARCHIVOENTRADA" ToRole="ENTRADA" />
   </EntityType>
   <EntityType Name="AUTORENTRADA">
@@ -38,6 +38,7 @@
     <Property Name="Calificacion" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK__CALIFICAC__Carne__5812160E" FromRole="CALIFICACIONENTRADA" ToRole="ESTUDIANTE" />
     <NavigationProperty Name="ENTRADA" Relationship="Self.FK__CALIFICAC__IdEnt__59063A47" FromRole="CALIFICACIONENTRADA" ToRole="ENTRADA" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="CARRERA">
     <Key>
@@ -58,6 +59,7 @@
     <Property Name="Contenido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK__COMENTARI__Carne__5629CD9C" FromRole="COMENTARIOENTRADA" ToRole="ESTUDIANTE" />
     <NavigationProperty Name="ENTRADA" Relationship="Self.FK__COMENTARI__IdEnt__571DF1D5" FromRole="COMENTARIOENTRADA" ToRole="ENTRADA" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="CURSO">
     <Key>
@@ -91,6 +93,7 @@
     <NavigationProperty Name="COMENTARIOENTRADAs" Relationship="Self.FK__COMENTARI__IdEnt__571DF1D5" FromRole="ENTRADA" ToRole="COMENTARIOENTRADA" />
     <NavigationProperty Name="CURSO1" Relationship="Self.FK__ENTRADA__Curso__5165187F" FromRole="ENTRADA" ToRole="CURSO" />
     <NavigationProperty Name="TEMA1" Relationship="Self.FK__ENTRADA__Tema__52593CB8" FromRole="ENTRADA" ToRole="TEMA" />
+    <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ESTUDIANTE">
     <Key>
@@ -100,7 +103,7 @@
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ClavePublica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClavePublica" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="AUTORENTRADAs" Relationship="Self.FK__AUTORENTR__Carne__5441852A" FromRole="ESTUDIANTE" ToRole="AUTORENTRADA" />
     <NavigationProperty Name="CALIFICACIONENTRADAs" Relationship="Self.FK__CALIFICAC__Carne__5812160E" FromRole="ESTUDIANTE" ToRole="CALIFICACIONENTRADA" />

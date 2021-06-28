@@ -44,11 +44,8 @@ namespace apisBlog.Controllers
             }
         }
 
-
-
         public Object Get(int carnet,string password)
         {
-
             var sha256 = new SHA256Managed();
             string passwordSHA=BitConverter.ToString(sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password))).Replace("-", "");
             if (apiAdmin.getAdmin(carnet) != null)
