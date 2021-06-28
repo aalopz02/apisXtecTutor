@@ -37,7 +37,7 @@ namespace apisBlog.Controllers
             var sha256 = new SHA256Managed();
             string passwordSHA = BitConverter.ToString(sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(clave))).Replace("-", "");
             viejo.ClavePublica = passwordSHA;
-            apiEstudiante.setEstudiante(viejo);
+            apiEstudiante.modEstudiante(viejo);
         }
     }
 }

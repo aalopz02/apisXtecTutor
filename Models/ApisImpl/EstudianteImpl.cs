@@ -50,6 +50,15 @@ namespace apisBlog.Models.ApisImpl
             }
         }
 
+        public void modEstudiante(ESTUDIANTE viejo)
+        {
+            using (var context = new XTecTutorDBEntities())
+            {
+                context.ESTUDIANTEs.FirstOrDefault(c => c.Carnet == viejo.Carnet).ClavePublica = viejo.ClavePublica;
+                context.SaveChanges();
+            }
+        }
+
         public bool setEstudiante(ESTUDIANTE nuevo)
         {
             using (var context = new XTecTutorDBEntities())

@@ -79,7 +79,8 @@ namespace apisBlog.Models.Mocks
 
         public bool setComentario(COMENTARIOENTRADA nuevo)
         {
-            throw new NotImplementedException();
+            listaComentarios.Add(nuevo);
+            return true;
         }
     }
 }

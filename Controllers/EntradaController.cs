@@ -18,12 +18,12 @@ namespace apisBlog.Controllers
         //EntradaI apiEntrada = new EntradaImpl();
         //EstudianteI apiEstudiante = new EstudianteImpl();
         //AutorEntradaI apiAutores = new AutorEntradaImpl();
-        EntradaI apiEntrada = new EntradasMock();
-        EstudianteI apiEstudiante = new EstudiantesMock();
         AutorEntradaI apiAutores = new AutoresMock();
+        EntradaI apiEntrada = new EntradasMock();
         CarreraI apiCarreras = new CarreraMock();
         CursoI apiCursos = new CursoMock();
         TemaI apiTemas = new TemaMock();
+        EstudianteI apiEstudiante = new EstudiantesMock();
 
 
         [TestMethod]
