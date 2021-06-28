@@ -19,7 +19,9 @@ namespace apisBlog.Controllers
     {
         AdminI apiAdmin = new AdminImpl();
         EstudianteI apiEstudiante = new EstudianteImpl();
-        
+        /// <summary>
+        /// Test method for Login
+        /// </summary>
         [TestMethod]
         public void test() {
             apiAdmin = new AdminMock();
@@ -60,8 +62,12 @@ namespace apisBlog.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-
-        // GET api/values/5
+        /// <summary>
+        /// Metodo para ver si es estudiante o admin
+        /// </summary>
+        /// <param name="carnet"></param>
+        /// <returns>String de tipo</returns>
+        // GET api/Login?carnet=1234
         public String Get(int carnet)
         {
             if (apiAdmin.getAdmin(carnet) != null)
@@ -78,7 +84,13 @@ namespace apisBlog.Controllers
         }
 
 
-
+        /// <summary>
+        /// Metodo para iniciar sesion
+        /// </summary>
+        /// <param name="carnet"></param>
+        /// <param name="password"></param>
+        /// <returns>String si error, Objeto estudiante o admin si es correcto el login</returns>
+        // GET api/Login?carnet=1234&password=clave
         public Object Get(int carnet,string password)
         {
 
