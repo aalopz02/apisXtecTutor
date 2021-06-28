@@ -20,14 +20,20 @@ namespace apisBlog.Models.Mocks
             listaAutores.Add(new AUTORENTRADA
             {
                 Carnet = 2017075876,
-                IdEntrada = 1,
+                IdEntrada = 2,
                 IdAutorEntrada = 2
+            });
+            listaAutores.Add(new AUTORENTRADA
+            {
+                Carnet = 2017075876,
+                IdEntrada = 1,
+                IdAutorEntrada = 3
             });
             listaAutores.Add(new AUTORENTRADA
             {
                 Carnet = 2017075877,
                 IdEntrada = 2,
-                IdAutorEntrada = 3
+                IdAutorEntrada = 4
             });
         }
 
