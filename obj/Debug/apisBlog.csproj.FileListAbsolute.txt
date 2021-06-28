@@ -262,3 +262,4 @@ E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.dll
 E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.pdb
 E:\Documents\GitHub\apisXtecTutor\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\aalop\source\repos\apisBlog\apisXtecTutor\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Documents\GitHub\apisXtecTutor\obj\Debug\apisBlog.csprojAssemblyReference.cache
