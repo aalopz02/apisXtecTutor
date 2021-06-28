@@ -71,6 +71,7 @@ namespace apisBlog.Controllers
 
             EntradaViewModel entradaView = new EntradaViewModel();
             ENTRADA eNTRADA = apiEntrada.getEntrada(idEntrada);
+            entradaView.Visible = eNTRADA.Visible;
             entradaView.Vistas = eNTRADA.Vistas;
             entradaView.Abstract = eNTRADA.Abstract;
             entradaView.Body = eNTRADA.Body;

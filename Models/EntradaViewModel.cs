@@ -20,6 +20,6 @@ namespace apisBlog.Models
         public string Abstract { get; set; }
         public string Body { get; set; }
         public string titulo { get; set; }
-
+        public bool Visible { get;  set; }
     }
 }
