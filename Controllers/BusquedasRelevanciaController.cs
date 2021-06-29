@@ -83,7 +83,7 @@ namespace apisBlog.Controllers
         public IEnumerable<BusquedaRelevanciaModel> Get(string fecha, int carrera)
         {
             
-            IEnumerable<ENTRADA> entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear<= Convert.ToDateTime(fecha)).Where(e => e.Visible==true).OrderByDescending(e => e.FechaCrear);
+            IEnumerable<ENTRADA> entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible==true).OrderByDescending(e => e.FechaCrear);
             List<BusquedaRelevanciaModel> aux = new List<BusquedaRelevanciaModel>();
             foreach (ENTRADA entrada in entradas)
             {
@@ -156,7 +156,7 @@ namespace apisBlog.Controllers
         //api/BusquedasRelevancia?fecha=03/12/22&carrera=1&curso=1
         public IEnumerable<BusquedaRelevanciaModel> Get(string fecha, int carrera, string curso)
         {
-            IEnumerable<ENTRADA> entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            IEnumerable<ENTRADA> entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             List<BusquedaRelevanciaModel> aux = new List<BusquedaRelevanciaModel>();
             foreach (ENTRADA entrada in entradas)
             {
@@ -232,17 +232,17 @@ namespace apisBlog.Controllers
         public IEnumerable<BusquedaRelevanciaModel> Get(string fecha, int carrera, string curso, int tema)
         {
             IEnumerable<ENTRADA> entradas;
-            if (curso == "")
+            if (curso == "0" || curso == null)
             {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
-            else if (tema == 0 & curso != "")
+            else if (tema == 0 & curso != "0")
             {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
             else
             {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso & e.Tema == tema).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso & e.Tema == tema).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
             List<BusquedaRelevanciaModel> aux = new List<BusquedaRelevanciaModel>();
             foreach (ENTRADA entrada in entradas)
@@ -252,11 +252,17 @@ namespace apisBlog.Controllers
                 List<ESTUDIANTE> autoreslist = new List<ESTUDIANTE>();
                 double calificacion;
                 string Tema;
+
                 var cantidadcomentarios = apiComentarios.getAllComentarios().GroupBy(e => e.IdEntrada).Select(group => Tuple.Create(group.Key, group.Count()));
-                int ccomentarios = cantidadcomentarios.Select(e => e.Item2).Max();
-                int Numcomentarios = apiComentarios.getAllComentarios().Where(e => e.IdEntrada == entrada.IdEntrada).Count();
-
-
+                int ccomentarios = 1;
+                int Numcomentarios = 0;
+                try
+                {
+                    ccomentarios = cantidadcomentarios.Select(e => e.Item2).Max();
+                    Numcomentarios = apiComentarios.getAllComentarios().Where(e => e.IdEntrada == entrada.IdEntrada).Count();
+                }
+                catch (InvalidOperationException){
+                }
                 try
                 {
                     calificacion = apiCalificacion.getAllCalificaciones().Where(e => e.IdEntrada == entrada.IdEntrada).Select(e => e.Calificacion).Average();
@@ -287,7 +293,7 @@ namespace apisBlog.Controllers
                 }
                 aux.Add(new BusquedaRelevanciaModel
                 {
-
+                    Titulo = entrada.Titulo,
                     Vistas = entrada.Vistas,
                     Carrera = apiCarreras.getCarrera(entrada.Carrera).Nombre,
                     Curso = entrada.Curso + " " + apiCursos.getCurso(entrada.Curso).Nombre,

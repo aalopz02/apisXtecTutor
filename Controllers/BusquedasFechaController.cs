@@ -212,15 +212,15 @@ namespace apisBlog.Controllers
         public IEnumerable<BusquedaFechaModel> Get(string fecha, int carrera, string curso, int tema)
         {
             IEnumerable<ENTRADA> entradas;
-            if (curso=="") {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+            if (curso=="0" || curso == null) {
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
-            else if (tema==0 & curso!="")
+            else if (tema==0 & curso != "0")
             {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
             else {
-                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso & e.Tema == tema).Where(e => e.FechaCrear <= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
+                entradas = apiEntradas.getAllEntradas().Where(e => e.Carrera == carrera & e.Curso == curso & e.Tema == tema).Where(e => e.FechaCrear >= Convert.ToDateTime(fecha)).Where(e => e.Visible == true).OrderByDescending(e => e.FechaCrear);
             }
             List<BusquedaFechaModel> aux = new List<BusquedaFechaModel>();
             foreach (ENTRADA entrada in entradas)
@@ -260,7 +260,7 @@ namespace apisBlog.Controllers
                 }
                 aux.Add(new BusquedaFechaModel
                 {
-
+                    Titulo = entrada.Titulo,
                     Vistas = entrada.Vistas,
                     Carrera = apiCarreras.getCarrera(entrada.Carrera).Nombre,
                     Curso = entrada.Curso + " " + apiCursos.getCurso(entrada.Curso).Nombre,

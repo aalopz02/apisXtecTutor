@@ -8,6 +8,7 @@ namespace apisBlog.Models.ApisModel
 {
     public class BusquedaRelevanciaModel
     {
+        public string Titulo { get; set; }
         public int IdEntrada { get; set; }
         public string Carrera { get; set; }
         public string Curso { get; set; }

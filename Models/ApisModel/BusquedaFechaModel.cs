@@ -21,8 +21,6 @@ namespace apisBlog.Models.ApisModel
         public int NumComentarios { get; set; }
 
         public List<ESTUDIANTE> Autores { get; set; }
-
-
-
+        public string Titulo { get; set; }
     }
 }
