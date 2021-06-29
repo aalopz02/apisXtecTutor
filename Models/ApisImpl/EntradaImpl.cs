@@ -61,9 +61,18 @@ namespace apisBlog.Models.ApisImpl
                             context.ENTRADAs.ToList()[i].Titulo = nueva.Titulo;
                             context.ENTRADAs.ToList()[i].Abstract = nueva.Abstract;
                             context.ENTRADAs.ToList()[i].Body = nueva.Body;
-                            context.ENTRADAs.ToList()[i].Carrera = nueva.Carrera;
-                            context.ENTRADAs.ToList()[i].Curso = nueva.Curso;
-                            context.ENTRADAs.ToList()[i].Tema = nueva.Tema;
+                            if (nueva.Carrera != 0) {
+                                context.ENTRADAs.ToList()[i].Carrera = nueva.Carrera;
+                            }
+                             if (nueva.Curso != "0")
+                            {
+                                context.ENTRADAs.ToList()[i].Curso = nueva.Curso;
+                            }
+                            if (nueva.Tema != 0)
+                            {
+                                context.ENTRADAs.ToList()[i].Tema = nueva.Tema;
+                            }   
+                        
                             context.ENTRADAs.ToList()[i].Visible = nueva.Visible;
                             context.ENTRADAs.ToList()[i].FechaMod = nueva.FechaMod;
                             context.SaveChanges();

@@ -72,14 +72,23 @@ namespace apisBlog.Controllers
             entradaView.Abstract = eNTRADA.Abstract;
             entradaView.Body = eNTRADA.Body;
             entradaView.Carrera = apiCarreras.getCarrera(eNTRADA.Carrera).Nombre;
-            entradaView.Curso = apiCursos.getCurso(eNTRADA.Curso).Nombre;
-            if (eNTRADA.Tema != null || eNTRADA.Tema != 0)
+            if (eNTRADA.Curso == null)
             {
-                entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
+                entradaView.Curso = "";
+                
             }
             else
             {
+                entradaView.Curso = apiCursos.getCurso(eNTRADA.Curso).Nombre;
+            }
+            
+            if (eNTRADA.Tema == null)
+            {
                 entradaView.Tema = "";
+            }
+            else
+            {
+                entradaView.Tema = apiTemas.getTema((int)eNTRADA.Tema).Nombre;
             }
             entradaView.FechaCrear = eNTRADA.FechaCrear;
             entradaView.FechaMod = eNTRADA.FechaMod;
@@ -119,7 +128,7 @@ namespace apisBlog.Controllers
                 List<EntradaViewModel> aux = new List<EntradaViewModel>();
                 foreach (ENTRADA entrada in listaRetorno)
                 {
-                    aux.Add(new EntradaViewModel
+                    EntradaViewModel nueva = new EntradaViewModel
                     {
                         titulo = entrada.Titulo,
                         Visible = entrada.Visible,
@@ -127,13 +136,18 @@ namespace apisBlog.Controllers
                         Abstract = entrada.Abstract,
                         Body = entrada.Body,
                         Carrera = new CarreraController().getCarreras().FirstOrDefault(c => c.IdCarrera == entrada.Carrera).Nombre,
-                        Curso = entrada.Curso,
-                        Tema = new TemaController().getTemas().FirstOrDefault(c => c.IdTema == entrada.Tema).Nombre,
                         FechaCrear = entrada.FechaCrear,
                         FechaMod = entrada.FechaMod,
                         IdEntrada = entrada.IdEntrada,
                         calificacion = new CalificacionController().getOverAll(entrada.IdEntrada).ToString()
-                    }) ;
+                    };
+                    if (entrada.Tema == null) {
+                        nueva.Tema = null;
+                    } else {
+                        nueva.Tema = new TemaController().getTemas().FirstOrDefault(c => c.IdTema == entrada.Tema).Nombre;
+                    }
+                    
+                    aux.Add(nueva);
 
                 }
                 return aux;
